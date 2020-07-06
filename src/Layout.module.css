@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -10,11 +13,27 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-}
-.tablesContainer div {
-    margin: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 .removeNames{
     width: 250px;
     text-align: center;
+}
+.tableBrothersNames{
+    margin: 5px;
+}
+.tableSistersNames{
+    margin: 5px;
+}
+.tablesContainerAssignments{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.tablesContainerAssignments div{
+    margin-right: 25px;
 }

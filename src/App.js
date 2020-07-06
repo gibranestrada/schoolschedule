@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Names from './Names';
+import {Names} from './Names';
 import Layout from './Layout';
 
 const App = () => {
