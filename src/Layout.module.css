@@ -13,7 +13,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 .removeNames{
@@ -31,9 +31,26 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 .tablesContainerAssignments div{
     margin-right: 25px;
+}
+.submitReset{
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+.submitReset button {
+    font-size: 20px;
+    padding: 5px 10px;
+    margin-right: 25px;
+    cursor: pointer;
+}
+.submitReset input {
+    font-size: 20px;
+    padding: 5px 10px;
+    margin-right: 25px;
+    cursor: pointer;
 }
