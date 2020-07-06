@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+}
+.tablesContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.tablesContainer div {
+    margin: 15px;
+}
+.removeNames{
+    width: 250px;
+    text-align: center;
+}
