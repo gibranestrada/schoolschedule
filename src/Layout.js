@@ -10,23 +10,21 @@ const Layout = () => {
   let removedBrothersNames = [];
   let removedSistersNames = [];
 
-  const removedBrothersNamesHandler = (e) => {
+  const removedNamesHandler = (e) => {
     e.persist();
     if (e.target.type === "checkbox") {
-      if (removedBrothersNames.includes(e.target.id)) {
-        removedBrothersNames = removedBrothersNames.filter(value => value !== e.target.id);
-      } else {
-        removedBrothersNames.push(e.target.id);
-      }
-    }
-  }
-  const removedSistersNamesHandler = (e) => {
-    e.persist();
-    if (e.target.type === "checkbox") {
-      if (removedSistersNames.includes(e.target.id)) {
-        removedSistersNames = removedSistersNames.filter(value => value !== e.target.id);
-      } else {
-        removedSistersNames.push(e.target.id);
+      if(e.target.className === 'sister'){
+        if (removedSistersNames.includes(e.target.id)) {
+          removedSistersNames = removedSistersNames.filter(value => value !== e.target.id);
+        } else {
+          removedSistersNames.push(e.target.id);
+        }
+      }else {
+        if (removedBrothersNames.includes(e.target.id)) {
+          removedBrothersNames = removedBrothersNames.filter(value => value !== e.target.id);
+        } else {
+          removedBrothersNames.push(e.target.id);
+        }
       }
     }
   }
@@ -38,7 +36,6 @@ const Layout = () => {
     const assignedNames = Object.keys(schoolOptions).map(value => {
       const newString = changeAssignmentString(value);
       const assignmentArr = ['initial', 'return', 'bibleStudy'].some(val => value.includes(val));
-      // console.log(schoolOptions)
       if(schoolOptions[value].assignment === 'brother'){
         if(assignmentArr){
           const returnedNames = names.chooseBrother(value);
@@ -51,9 +48,9 @@ const Layout = () => {
           const returnedNames = names.chooseSister(value);
           return {[schoolOptions[value].school]: {assignedTo: returnedNames[0], assignment: newString, houseHolder: returnedNames[1]}};
         }else{
+          console.log('no')
           return {[schoolOptions[value].school]: {assignedTo: names.chooseSister(value), assignment: newString}};
         }
-        // return {[names.chooseSister(value)] : value};
       }
     })
     console.log(assignedNames);
@@ -87,7 +84,7 @@ const Layout = () => {
       <form onSubmit={submitHandler}>
         <h1>School Schedule</h1>
         <p style={{ fontSize: '22px', fontWeight: 600, marginBottom: '0px' }}>Remove Names</p>
-        <div onClick={removedBrothersNamesHandler} className={styles.tablesContainer}>
+        <div onClick={removedNamesHandler} className={styles.tablesContainer}>
           {brothersList.map((value) => {
             return (
               <div className={styles.tableBrothersNames} key={value}>
@@ -96,11 +93,11 @@ const Layout = () => {
               </div>
             )
           })}
-          <div onClick={removedSistersNamesHandler} style={{ height: '20px', width: '100%' }}></div>
+          <div style={{ height: '20px', width: '100%' }}></div>
           {sistersList.map((value) => {
             return (
               <div className={styles.tableSistersNames} key={value}>
-                <input type="checkbox" id={value} value={value} name={value} />
+                <input className="sister" type="checkbox" id={value} value={value} name={value} />
                 <label htmlFor={value}>{value}</label>
               </div>
             )

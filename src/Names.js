@@ -351,14 +351,15 @@ let copyBrothersNames;
 let copySistersNames;
 
 export const removeBrothersNames = array => {
-    onlyBrothersNames = onlyBrothersNames.filter(val => !array.includes(val));
-    copyBrothersNames = onlyBrothersNames.slice(0);
+    copyBrothersNames = onlyBrothersNames.slice(0); // copyBrothersNames = onlyBrothersNames.slice(0);
+    copyBrothersNames = copyBrothersNames.filter(val => !array.includes(val));
 }
 export const removeSistersNames = array => {
-    onlySistersNames = onlySistersNames.filter(val => !array.includes(val));
     copySistersNames = onlySistersNames.slice(0);
+    copySistersNames = copySistersNames.filter(val => !array.includes(val));
 }
-
+const removedBrothersNames = [];
+const removedSistersNames = [];
 
 export const chooseBrother = (assign) => {
     const assignment = /initial|return|bibleStudy/.test(assign);
@@ -367,7 +368,7 @@ export const chooseBrother = (assign) => {
     const randomNoRepeats = (array) => {
         var copy = array; // array.slice(0);
         return function test() {
-            if (copy.length < 1) { copyBrothersNames = onlyBrothersNames.slice(0); copy = copyBrothersNames; }// array.slice(0); }
+            if (copy.length < 1) { copyBrothersNames = onlyBrothersNames.filter(val=> !removedBrothersNames.includes(val)); copy = copyBrothersNames; }// onlyBrothersNames.slice(0) array.slice(0); }
             var index = Math.floor(Math.random() * copy.length);
             var item = copy[index];
             let el;
@@ -377,30 +378,31 @@ export const chooseBrother = (assign) => {
                 el = masterListBrothers[item].assignments.some(a=> assign.includes(a));
             }
             if(assignment && !el){
-                console.log(1);
                 counter += 1;
                 if(counter === copy.length){
-                    copy = onlyBrothersNames.slice(0);
+                    copy = onlyBrothersNames.filter(val=> !removedBrothersNames.includes(val));//onlyBrothersNames.slice(0);
                 }
                 return test();
             }else if(assignment && el && arrayNames.length < 1){
-                console.log(2);
-                copy.splice(index, 1)
+                copy.splice(index, 1);
+                removedBrothersNames.push(item);
                 arrayNames.push(item);
                 return test();
             }else if(assignment && el && arrayNames.length === 1){
                 copy.splice(index, 1);
                 arrayNames.push(item);
+                removedBrothersNames.push(item);
                 console.log(arrayNames);
                 return arrayNames;
             }
             if(!el && !assignment){
                 counter += 1;
                 if(counter === copy.length){
-                    copy = onlyBrothersNames.slice(0);
+                    copy = onlyBrothersNames.filter(val=> !removedBrothersNames.includes(val));//onlyBrothersNames.slice(0);
                 }
                 return test();
             }else{
+                removedBrothersNames.push(item);
                 copy.splice(index, 1);
                 return item;
             }
@@ -417,41 +419,40 @@ export const chooseSister = (assign) => {
     const randomNoRepeats = (array) => {
         var copy = array; // array.slice(0);
         return function test() {
-        if (copy.length < 1) { copySistersNames = onlySistersNames.slice(0); copy = copySistersNames; }// array.slice(0); }
+        if (copy.length < 1) { copySistersNames = onlySistersNames.filter(val=> !removedSistersNames.includes(val)); copy = copySistersNames; }//onlySistersNames.slice(0) array.slice(0); }
             var index = Math.floor(Math.random() * copy.length);
             var item = copy[index];
             let el;
             if(arrayNames.length > 0){
-                el = masterListSisters[item].assignments.some(a=> assign.includes(a) || 'householder'.includes(a));
+                el = masterListSisters[item].assignments.some(a=> (assign.includes(a) || 'householder'.includes(a)));
             }else{
                 el = masterListSisters[item].assignments.some(a=> assign.includes(a));
             }
-
             if(assignment && !el){
-                console.log(1);
                 counter += 1;
                 if(counter === copy.length){
-                    copy = onlySistersNames.slice(0);
+                    copy = onlySistersNames.filter(val=> !removedSistersNames.includes(val)); // onlySistersNames.slice(0);
                 }
                 return test();
             }else if(assignment && el && arrayNames.length < 1){
-                console.log(2);
-                copy.splice(index, 1)
+                copy.splice(index, 1);
+                removedSistersNames.push(item);
                 arrayNames.push(item);
                 return test();
             }else if(assignment && el && arrayNames.length === 1){
                 copy.splice(index, 1);
+                removedSistersNames.push(item);
                 arrayNames.push(item);
-                console.log(arrayNames);
                 return arrayNames;
             }
             if(!el && !assignment){
                 counter += 1;
                 if(counter === copy.length){
-                    copy = onlySistersNames.slice(0);
+                    copy = onlySistersNames.filter(val=> !removedSistersNames.includes(val)); // onlySistersNames.slice(0);
                 }
                 return test();
             }else{
+                removedSistersNames.push(item);
                 copy.splice(index, 1);
                 return item;
             }
