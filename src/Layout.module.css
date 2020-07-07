@@ -1,56 +1,56 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 .container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
-    padding: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  padding: 15px;
 }
-.tablesContainer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
+.tablesContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-.removeNames{
-    width: 250px;
-    text-align: center;
+.removeNames {
+  width: 250px;
+  text-align: center;
 }
-.tableBrothersNames{
-    margin: 5px;
+.tableBrothersNames {
+  margin: 5px;
 }
-.tableSistersNames{
-    margin: 5px;
+.tableSistersNames {
+  margin: 5px;
 }
-.tablesContainerAssignments{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
+.tablesContainerAssignments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-.tablesContainerAssignments div{
-    margin-right: 25px;
+.tablesContainerAssignments div {
+  margin-right: 25px;
 }
-.submitReset{
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 30px;
+.submitReset {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 30px;
 }
 .submitReset button {
-    font-size: 20px;
-    padding: 5px 10px;
-    margin-right: 25px;
-    cursor: pointer;
+  font-size: 20px;
+  padding: 5px 10px;
+  margin-right: 25px;
+  cursor: pointer;
 }
 .submitReset input {
-    font-size: 20px;
-    padding: 5px 10px;
-    margin-right: 25px;
-    cursor: pointer;
+  font-size: 20px;
+  padding: 5px 10px;
+  margin-right: 25px;
+  cursor: pointer;
 }
