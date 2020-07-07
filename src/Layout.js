@@ -38,7 +38,7 @@ const Layout = () => {
     const assignedNames = Object.keys(schoolOptions).map(value => {
       const newString = changeAssignmentString(value);
       const assignmentArr = ['initial', 'return', 'bibleStudy'].some(val => value.includes(val));
-      console.log(schoolOptions)
+      // console.log(schoolOptions)
       if(schoolOptions[value].assignment === 'brother'){
         if(assignmentArr){
           const returnedNames = names.chooseBrother(value);

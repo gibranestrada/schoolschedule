@@ -106,7 +106,7 @@ export const masterListBrothers = {
     kirill_stupko: {
         assignments: ["reading", "initial", "householder", "return"],
         russianName: "Кирилл Ступко"
-    },
+    }
     // azimjon_kacimov: {
     //     assignments: ["initial", "housholder"],
     //     russianName: "Азимджон Касимов"
@@ -347,37 +347,58 @@ export const masterListSisters = {
 };
 let onlyBrothersNames = Object.keys(masterListBrothers);
 let onlySistersNames = Object.keys(masterListSisters);
+let copyBrothersNames;
+let copySistersNames;
 
 export const removeBrothersNames = array => {
     onlyBrothersNames = onlyBrothersNames.filter(val => !array.includes(val));
+    copyBrothersNames = onlyBrothersNames.slice(0);
 }
 export const removeSistersNames = array => {
     onlySistersNames = onlySistersNames.filter(val => !array.includes(val));
+    copySistersNames = onlySistersNames.slice(0);
 }
 
 
 export const chooseBrother = (assign) => {
     const assignment = /initial|return|bibleStudy/.test(assign);
     const arrayNames = [];
+    let counter = 0;
     const randomNoRepeats = (array) => {
-        var copy = array.slice(0);
+        var copy = array; // array.slice(0);
         return function test() {
-            if (copy.length < 1) { copy = array.slice(0); }
+            if (copy.length < 1) { copyBrothersNames = onlyBrothersNames.slice(0); copy = copyBrothersNames; }// array.slice(0); }
             var index = Math.floor(Math.random() * copy.length);
             var item = copy[index];
-            const el = masterListBrothers[item].assignments.some(a=> assign.includes(a));
+            let el;
+            if(arrayNames.length > 0){
+                el = masterListBrothers[item].assignments.some(a=> assign.includes(a) || 'householder'.includes(a));
+            }else{
+                el = masterListBrothers[item].assignments.some(a=> assign.includes(a));
+            }
             if(assignment && !el){
+                console.log(1);
+                counter += 1;
+                if(counter === copy.length){
+                    copy = onlyBrothersNames.slice(0);
+                }
                 return test();
-            }else if(assignment && el && arrayNames.length < 2){
+            }else if(assignment && el && arrayNames.length < 1){
+                console.log(2);
                 copy.splice(index, 1)
                 arrayNames.push(item);
                 return test();
-            }else if(assignment && el && arrayNames.length === 2){
+            }else if(assignment && el && arrayNames.length === 1){
                 copy.splice(index, 1);
                 arrayNames.push(item);
+                console.log(arrayNames);
                 return arrayNames;
             }
-            if(!el){
+            if(!el && !assignment){
+                counter += 1;
+                if(counter === copy.length){
+                    copy = onlyBrothersNames.slice(0);
+                }
                 return test();
             }else{
                 copy.splice(index, 1);
@@ -386,33 +407,49 @@ export const chooseBrother = (assign) => {
             
         };
     }
-    const brotherName = randomNoRepeats(onlyBrothersNames);
+    const brotherName = randomNoRepeats(copyBrothersNames);
     return brotherName();
 };
 export const chooseSister = (assign) => {
     const assignment = /initial|return|bibleStudy/.test(assign);
     const arrayNames = [];
+    let counter = 0;
     const randomNoRepeats = (array) => {
-        var copy = array.slice(0);
+        var copy = array; // array.slice(0);
         return function test() {
-            if (copy.length < 1) { copy = array.slice(0); }
+        if (copy.length < 1) { copySistersNames = onlySistersNames.slice(0); copy = copySistersNames; }// array.slice(0); }
             var index = Math.floor(Math.random() * copy.length);
             var item = copy[index];
-            const el = masterListSisters[item].assignments.some(a=> assign.includes(a));
+            let el;
+            if(arrayNames.length > 0){
+                el = masterListSisters[item].assignments.some(a=> assign.includes(a) || 'householder'.includes(a));
+            }else{
+                el = masterListSisters[item].assignments.some(a=> assign.includes(a));
+            }
 
             if(assignment && !el){
+                console.log(1);
+                counter += 1;
+                if(counter === copy.length){
+                    copy = onlySistersNames.slice(0);
+                }
                 return test();
-            }else if(assignment && el && arrayNames.length < 2){
+            }else if(assignment && el && arrayNames.length < 1){
+                console.log(2);
                 copy.splice(index, 1)
                 arrayNames.push(item);
                 return test();
-            }else if(assignment && el && arrayNames.length === 2){
+            }else if(assignment && el && arrayNames.length === 1){
                 copy.splice(index, 1);
                 arrayNames.push(item);
+                console.log(arrayNames);
                 return arrayNames;
             }
-
-            if(!el){
+            if(!el && !assignment){
+                counter += 1;
+                if(counter === copy.length){
+                    copy = onlySistersNames.slice(0);
+                }
                 return test();
             }else{
                 copy.splice(index, 1);
@@ -420,7 +457,7 @@ export const chooseSister = (assign) => {
             }
         };
     }
-    const sisterName = randomNoRepeats(onlySistersNames);
+    const sisterName = randomNoRepeats(copySistersNames);
     return sisterName();
 };
 
