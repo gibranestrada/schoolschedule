@@ -19,11 +19,11 @@ export const masterListBrothers = {
     russianName: "Максим Петров",
   },
   gibran_estrada: {
-    assignments: ["initial", "reading", "return", "talk", "householder"],
+    assignments: ["initial", "reading", "return", "householder"], // talk
     russianName: "Хибран Эстрада",
   },
   vadim_klimenko: {
-    assignments: ["initial", "reading", "return", "talk"],
+    assignments: ["initial", "reading", "return", "talk", "householder"],
     russianName: "Вадим Клименко",
   },
   georgiy_pleev: {
@@ -238,7 +238,7 @@ export const masterListSisters = {
     russianName: "татьяна даниелсон",
   },
   angelika_estrada: {
-    assignments: ["initial", "return", "householder", "bibleStudy"],
+    assignments: ["initial", "return", "householder"], //bibleStudy
     exceptions: ["only 2nd school"],
     russianName: "Ангелика Эстрада",
   },
@@ -370,13 +370,13 @@ export const masterListSisters = {
     assignments: ["initial", "return", "householder"],
     russianName: "Кристина Аксентьева",
   },
-  // zamira_kasimova: {
+  // zamira_asimova: {
   //     assignments: ["initial", "return", "householder"],
-  //     russianName: "Замира Касимова"
+  //     russianName: "Замира асимова"
   // },
-  // raxima_kasimova: {
+  // raxima_asimova: {
   //     assignments: ["initial", "return", "householder"],
-  //     russianName: "Рахима Касимова"
+  //     russianName: "Рахима асимова"
   // }
   //not used Virginia Gilbert, Luba Gorina, Inna Kruglaya, gulzhikhan_galeeva
 };
@@ -389,23 +389,30 @@ let removedSistersNames = [];
 
 export const removeBrothersNames = (array) => {
   copyBrothersNames = onlyBrothersNames.slice(0); // copyBrothersNames = onlyBrothersNames.slice(0);
+  console.log(copyBrothersNames);
   copyBrothersNames = copyBrothersNames.filter((val) => !array.includes(val));
-  removedSistersNames = [];
+  console.log(copyBrothersNames);
+  removedBrothersNames = [];
 };
 export const removeSistersNames = (array) => {
   copySistersNames = onlySistersNames.slice(0);
   copySistersNames = copySistersNames.filter((val) => !array.includes(val));
+  removedSistersNames = [];
 };
 
 export const chooseBrother = (assign) => {
+  console.log(copyBrothersNames)
   const assignment = /initial|return|bibleStudy/.test(assign);
   const arrayNames = [];
   let counter = 0;
   const randomNoRepeats = (array) => {
     var copy = array; // array.slice(0);
     return function test() {
+      console.log(copy);
       if (copy.length < 1) {
-        copyBrothersNames = onlyBrothersNames.filter(
+        console.log('copy less than 1')
+        let broNames = onlyBrothersNames.slice(0);
+        copyBrothersNames = broNames.filter(
           (val) => !removedBrothersNames.includes(val)
         );
         copy = copyBrothersNames;
@@ -425,7 +432,9 @@ export const chooseBrother = (assign) => {
       if (assignment && !el) {
         counter += 1;
         if (counter === copy.length) {
-          copy = onlyBrothersNames.filter(
+          console.log('1')
+          let broNames = onlyBrothersNames.slice(0);
+          copy = broNames.filter(
             (val) => !removedBrothersNames.includes(val)
           ); //onlyBrothersNames.slice(0);
         }
@@ -437,14 +446,16 @@ export const chooseBrother = (assign) => {
         return test();
       } else if (assignment && el && arrayNames.length === 1) {
         copy.splice(index, 1);
-        arrayNames.push(item);
         removedBrothersNames.push(item);
+        arrayNames.push(item);
         return arrayNames;
       }
       if (!el && !assignment) {
         counter += 1;
         if (counter === copy.length) {
-          copy = onlyBrothersNames.filter(
+          console.log(counter)
+          let broNames = onlyBrothersNames.slice(0);
+          copy = broNames.filter(
             (val) => !removedBrothersNames.includes(val)
           ); //onlyBrothersNames.slice(0);
         }

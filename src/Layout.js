@@ -6,7 +6,6 @@ import RemoveNames from "./removeNames";
 var FileSaver = require("file-saver");
 
 const Layout = () => {
-  console.log(new Date().toDateString());
   let schoolOptions = {};
   let removedBrothersNames = [];
   let removedSistersNames = [];
@@ -25,13 +24,15 @@ const Layout = () => {
     secondSchool: "2АЯ ШКОЛА",
   };
   const date = { day: "", month: "" };
-  let finalNames = [];
+  let finalNames = {};
 
   const submitHandler = (e) => {
     e.persist();
     e.preventDefault();
-    const combineArraysSisters = [...removedSistersNames, ...tajikSisters];
-    const combineArraysBrothers = [...removedBrothersNames, ...tajikBrothers];
+    console.log(removedBrothersNames);
+    const combineArraysSisters = [...removedSistersNames, ...tajikSisters].filter((v, i, a) => a.indexOf(v) === i);
+    const combineArraysBrothers = [...removedBrothersNames, ...tajikBrothers].filter((v, i, a) => a.indexOf(v) === i);
+    console.log(combineArraysBrothers);
     names.removeBrothersNames(combineArraysBrothers);
     names.removeSistersNames(combineArraysSisters);
     const assignedNames = Object.keys(schoolOptions).map((value) => {
@@ -68,7 +69,6 @@ const Layout = () => {
             },
           };
         } else {
-          console.log("no");
           return {
             [schoolOptions[value].school]: {
               assignedTo: names.chooseSister(value),
@@ -78,9 +78,16 @@ const Layout = () => {
         }
       }
     });
-
-    console.log(assignedNames);
-    finalNames = assignedNames;
+    const newArray = { firstSchool: [], secondSchool: [] };
+    assignedNames.forEach(value => {
+      if (value.hasOwnProperty('firstSchool')) {
+        newArray.firstSchool.push(value.firstSchool);
+      } else {
+        newArray.secondSchool.push(value.secondSchool);
+      }
+    })
+    console.log(newArray);
+    finalNames = newArray;
   };
   const changeAssignmentString = (assign) => {
     let newStr;
@@ -116,19 +123,20 @@ const Layout = () => {
         };
       }
     }
+
   };
   const tajikHandler = (e) => {
     e.persist();
     if (e.target.checked) {
       tajikSisters = [
         "nisso_davlyatova",
-        "ruhafzo_joraev",
         "farzona_asimova",
         "khidoyat_asimova",
         "tamano_davlyatova",
         "dilnoza_otozhonova",
         "erkenai_joraeva",
         "ruhafzo_joraeva",
+        "khidoyat_asimova"
       ];
       tajikBrothers = [
         "alijon_davlyatov",
@@ -138,6 +146,7 @@ const Layout = () => {
         "akhmad_davlyatov",
         "babajon_gurbandurdiev",
         "akmal_davlyatov",
+        "dilovar_babahanov"
       ];
     } else {
       tajikSisters = [];
@@ -147,55 +156,55 @@ const Layout = () => {
   const setDate = (e) => {
     e.persist();
     if (e.target.id === "day") {
-      console.log(e);
       date.day = e.target.value;
     } else if (e.target.id === "month") {
-      console.log(e);
       date.month = e.target.value;
     }
   };
   const russianNameBrothers = names.masterListBrothers;
   const russianNameSisters = names.masterListSisters;
   const combineNames = { ...russianNameBrothers, ...russianNameSisters };
-  const saveResults = async (e) => {
+  const saveResults = (e) => {
     e.persist();
     e.preventDefault();
-    if (finalNames.length) {
+    if (Object.keys(finalNames).length) {
       let counter = 0;
       let blob = `${date.day}-${date.month} \r\n ${russianAssign.firstSchool} \r\n `;
-      finalNames.forEach(async (value, key) => {
-        if (value["firstSchool"] !== undefined) {
-          blob += `${russianAssign[value["firstSchool"].assignment]}: ${
-            combineNames[value["firstSchool"].assignedTo].russianName
+      let name;
+      finalNames.firstSchool.forEach((value) => {
+        console.log(value);
+        name = combineNames[value.assignedTo].russianName
+        blob += `${russianAssign[value.assignment]}: ${
+          name
           } ${
-            combineNames?.[value["firstSchool"]?.houseHolder]?.russianName
-              ? " / " +
-                combineNames?.[value["firstSchool"]?.houseHolder]?.russianName
-              : ""
+          name
+            ? " / " +
+            name
+            : ""
           } \r\n `;
-        } else if (value["secondSchool"] !== undefined) {
-          if (!counter) {
-            counter += 1;
-            blob += `\r\n ${russianAssign.secondSchool} \r\n`;
-          }
-          blob += ` ${russianAssign[value["secondSchool"].assignment]}: ${
-            combineNames[value["secondSchool"].assignedTo].russianName
-          } ${
-            combineNames?.[value["secondSchool"]?.houseHolder]?.russianName
-              ? " / " +
-                combineNames?.[value["secondSchool"]?.houseHolder]?.russianName
-              : ""
-          } \r\n `;
+      });
+      finalNames.secondSchool.forEach((value) => {
+        console.log(value);
+        if (!counter) {
+          counter += 1;
+          blob += `\r\n ${russianAssign.secondSchool} \r\n `;
         }
+        blob += `${russianAssign[value.assignment]}: ${
+          combineNames?.[value?.assignedTo]?.russianName
+          } ${
+          combineNames?.[value?.houseHolder]?.russianName
+            ? " / " +
+            combineNames?.[value?.houseHolder]?.russianName
+            : ""
+          } \r\n `;
       });
       console.log(blob);
-      // await save(blob, `${date.day}-${date.month}.txt`);
       var blob2 = new Blob([blob], {
         type: "text/plain;charset=utf-8",
       });
       FileSaver.saveAs(blob2, `${date.day}-${date.month}.txt`);
     } else {
-      console.log("what");
+      alert("Select assignments first");
     }
   };
 
@@ -409,7 +418,7 @@ const Layout = () => {
               type="radio"
               value="brother"
               name="2ndinitial"
-              require="true"
+              required
             />
             <label>Sisters</label>
             <input
@@ -417,10 +426,10 @@ const Layout = () => {
               type="radio"
               value="sister"
               name="2ndinitial"
-              require="true"
+              required
             />
             <label>No</label>
-            <input type="radio" value="no" name="2ndinitial" require="true" />
+            <input type="radio" value="no" name="2ndinitial" required />
           </div>
           <div>
             <p>Initial Call 2</p>
@@ -430,7 +439,7 @@ const Layout = () => {
               type="radio"
               value="brother"
               name="2ndinitial2"
-              require="true"
+              required
             />
             <label>Sisters</label>
             <input
@@ -438,10 +447,10 @@ const Layout = () => {
               type="radio"
               value="sister"
               name="2ndinitial2"
-              require="true"
+              required
             />
             <label>No</label>
-            <input type="radio" value="no" name="2ndinitial2" require="true" />
+            <input type="radio" value="no" name="2ndinitial2" required />
           </div>
           <div>
             <p>Initial Call 3</p>
@@ -451,7 +460,7 @@ const Layout = () => {
               type="radio"
               value="brother"
               name="2ndinitial3"
-              require="true"
+              required
             />
             <label>Sisters</label>
             <input
@@ -459,10 +468,10 @@ const Layout = () => {
               type="radio"
               value="sister"
               name="2ndinitial3"
-              require="true"
+              required
             />
             <label>No</label>
-            <input type="radio" value="no" name="2ndinitial3" require="true" />
+            <input type="radio" value="no" name="2ndinitial3" required />
           </div>
           <div>
             <p>Return Visit</p>
@@ -472,7 +481,7 @@ const Layout = () => {
               type="radio"
               value="brother"
               name="2ndreturn"
-              require="true"
+              required
             />
             <label>Sisters</label>
             <input
@@ -480,10 +489,10 @@ const Layout = () => {
               type="radio"
               value="sister"
               name="2ndreturn"
-              require="true"
+              required
             />
             <label>No</label>
-            <input type="radio" value="no" name="2ndreturn" require="true" />
+            <input type="radio" value="no" name="2ndreturn" required />
           </div>
           <div>
             <p>Return Visit 2</p>
@@ -493,7 +502,7 @@ const Layout = () => {
               type="radio"
               value="brother"
               name="2ndreturn2"
-              require="true"
+              required
             />
             <label>Sisters</label>
             <input
@@ -501,10 +510,10 @@ const Layout = () => {
               type="radio"
               value="sister"
               name="2ndreturn2"
-              require="true"
+              required
             />
             <label>No</label>
-            <input type="radio" value="no" name="2ndreturn2" require="true" />
+            <input type="radio" value="no" name="2ndreturn2" required />
           </div>
           <div>
             <p>Bible Study</p>
@@ -514,7 +523,7 @@ const Layout = () => {
               type="radio"
               value="brother"
               name="bibleStudy2"
-              require="true"
+              required
             />
             <label>Sisters</label>
             <input
@@ -522,10 +531,10 @@ const Layout = () => {
               type="radio"
               value="sister"
               name="bibleStudy2"
-              require="true"
+              required
             />
             <label>No</label>
-            <input type="radio" value="no" name="bibleStudy2" require="true" />
+            <input type="radio" value="no" name="bibleStudy2" required />
           </div>
           <div>
             <p>Talk</p>
@@ -535,10 +544,10 @@ const Layout = () => {
               type="radio"
               value="brother"
               name="talk2"
-              require="true"
+              required
             />
             <label>No</label>
-            <input type="radio" value="no" name="talk2" require="true" />
+            <input type="radio" value="no" name="talk2" required />
           </div>
         </div>
         <div onChange={setDate} className={styles.submitReset}>

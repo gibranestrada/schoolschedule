@@ -7,6 +7,7 @@ const RemoveNames = ({ removedBrothersNames, removedSistersNames }) => {
   const sistersList = Object.keys(names.masterListSisters).sort();
   const removedNamesHandler = (e) => {
     e.persist();
+    
     if (e.target.type === "checkbox") {
       if (e.target.className === "sister") {
         if (removedSistersNames.includes(e.target.id)) {
@@ -16,7 +17,7 @@ const RemoveNames = ({ removedBrothersNames, removedSistersNames }) => {
         } else {
           removedSistersNames.push(e.target.id);
         }
-      } else {
+      } else if (e.target.className === "brother") {
         if (removedBrothersNames.includes(e.target.id)) {
           removedBrothersNames = removedBrothersNames.filter(
             (value) => value !== e.target.id
@@ -32,8 +33,8 @@ const RemoveNames = ({ removedBrothersNames, removedSistersNames }) => {
     <div onClick={removedNamesHandler} className={styles.tablesContainer}>
       {brothersList.map((value) => {
         return (
-          <div className={styles.tableBrothersNames} key={value}>
-            <input type="checkbox" id={value} value={value} name={value} />
+          <div className={styles.tableBrothersNames} key={value + Math.random()}>
+            <input className="brother" type="checkbox" id={value} value={value} name={value} />
             <label htmlFor={value}>{value}</label>
           </div>
         );
