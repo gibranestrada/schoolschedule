@@ -32,7 +32,7 @@ export const masterListBrothers = {
   },
   pavel_nedbailov: {
     assignments: ["reading", "initial", "return", "householder", "talk"],
-    russianName: "Валерий Филипенко",
+    russianName: "Павел Недбайлов",
   },
   timur_khodjiev: {
     assignments: ["reading", "initial", "return", "talk", "householder"],
@@ -389,9 +389,7 @@ let removedSistersNames = [];
 
 export const removeBrothersNames = (array) => {
   copyBrothersNames = onlyBrothersNames.slice(0); // copyBrothersNames = onlyBrothersNames.slice(0);
-  console.log(copyBrothersNames);
   copyBrothersNames = copyBrothersNames.filter((val) => !array.includes(val));
-  console.log(copyBrothersNames);
   removedBrothersNames = [];
 };
 export const removeSistersNames = (array) => {
@@ -401,16 +399,13 @@ export const removeSistersNames = (array) => {
 };
 
 export const chooseBrother = (assign) => {
-  console.log(copyBrothersNames)
   const assignment = /initial|return|bibleStudy/.test(assign);
   const arrayNames = [];
   let counter = 0;
   const randomNoRepeats = (array) => {
     var copy = array; // array.slice(0);
     return function test() {
-      console.log(copy);
       if (copy.length < 1) {
-        console.log('copy less than 1')
         let broNames = onlyBrothersNames.slice(0);
         copyBrothersNames = broNames.filter(
           (val) => !removedBrothersNames.includes(val)
@@ -432,7 +427,6 @@ export const chooseBrother = (assign) => {
       if (assignment && !el) {
         counter += 1;
         if (counter === copy.length) {
-          console.log('1')
           let broNames = onlyBrothersNames.slice(0);
           copy = broNames.filter(
             (val) => !removedBrothersNames.includes(val)
@@ -453,7 +447,6 @@ export const chooseBrother = (assign) => {
       if (!el && !assignment) {
         counter += 1;
         if (counter === copy.length) {
-          console.log(counter)
           let broNames = onlyBrothersNames.slice(0);
           copy = broNames.filter(
             (val) => !removedBrothersNames.includes(val)

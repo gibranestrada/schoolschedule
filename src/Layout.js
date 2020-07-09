@@ -29,10 +29,8 @@ const Layout = () => {
   const submitHandler = (e) => {
     e.persist();
     e.preventDefault();
-    console.log(removedBrothersNames);
     const combineArraysSisters = [...removedSistersNames, ...tajikSisters].filter((v, i, a) => a.indexOf(v) === i);
     const combineArraysBrothers = [...removedBrothersNames, ...tajikBrothers].filter((v, i, a) => a.indexOf(v) === i);
-    console.log(combineArraysBrothers);
     names.removeBrothersNames(combineArraysBrothers);
     names.removeSistersNames(combineArraysSisters);
     const assignedNames = Object.keys(schoolOptions).map((value) => {
@@ -86,7 +84,6 @@ const Layout = () => {
         newArray.secondSchool.push(value.secondSchool);
       }
     })
-    console.log(newArray);
     finalNames = newArray;
   };
   const changeAssignmentString = (assign) => {
@@ -170,31 +167,32 @@ const Layout = () => {
     if (Object.keys(finalNames).length) {
       let counter = 0;
       let blob = `${date.day}-${date.month} \r\n ${russianAssign.firstSchool} \r\n `;
-      let name;
+
       finalNames.firstSchool.forEach((value) => {
-        console.log(value);
-        name = combineNames[value.assignedTo].russianName
+        let name = combineNames[value.assignedTo].russianName;
+        let householder = combineNames?.[value.houseHolder]?.russianName;
         blob += `${russianAssign[value.assignment]}: ${
           name
           } ${
-          name
+          householder
             ? " / " +
-            name
+            householder
             : ""
           } \r\n `;
       });
       finalNames.secondSchool.forEach((value) => {
-        console.log(value);
+        let name = combineNames[value.assignedTo].russianName;
+        let householder = combineNames?.[value.houseHolder]?.russianName;
         if (!counter) {
           counter += 1;
           blob += `\r\n ${russianAssign.secondSchool} \r\n `;
         }
         blob += `${russianAssign[value.assignment]}: ${
-          combineNames?.[value?.assignedTo]?.russianName
+          name
           } ${
-          combineNames?.[value?.houseHolder]?.russianName
+          householder
             ? " / " +
-            combineNames?.[value?.houseHolder]?.russianName
+            householder
             : ""
           } \r\n `;
       });
