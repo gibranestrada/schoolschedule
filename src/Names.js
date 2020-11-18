@@ -26,10 +26,10 @@ export const masterListBrothers = {
     assignments: ["initial", "reading", "return", "talk", "householder"],
     russianName: "Вадим Клименко",
   },
-  georgiy_pleev: {
-    assignments: ["initial", "reading", "return", "householder"],
-    russianName: "Георгий Плиев",
-  },
+  // georgiy_pleev: {
+  //   assignments: ["initial", "reading", "return", "householder"],
+  //   russianName: "Георгий Плиев",
+  // },
   pavel_nedbailov: {
     assignments: ["reading", "initial", "return", "householder", "talk"],
     russianName: "Павел Недбайлов",
@@ -226,7 +226,7 @@ export const masterListSisters = {
     russianName: "Анжелина Пейсакова",
   },
   maria_chirkova: {
-    assignments: ["initial", "return", "householder", "bibleStudy"],
+    assignments: ["householder"],
     russianName: "Марина Чиркова",
   },
   katya_pichugina: {
@@ -330,14 +330,14 @@ export const masterListSisters = {
     assignments: ["householder", "initial", "return", "bibleStudy"],
     russianName: "Тамано Давлятова",
   },
-  // ganimat_bekmamadova: {
-  //     assignments: ["householder", "initial", "return", "bibleStudy"],
-  //      russianName: "Ганимат Бекмамадова",
-  // },
-  lena_grigoreva: {
-    assignments: ["householder"],
-    russianName: "Лена Григорьева",
+  ganimat_bekmamadova: {
+    assignments: ["householder", "initial", "return", "bibleStudy"],
+    russianName: "Ганимат Бекмамадова",
   },
+  // lena_grigoreva: {
+  //   assignments: ["householder"],
+  //   russianName: "Лена Григорьева",
+  // },
   kristina_sulik: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Кристина Сулик",
@@ -365,10 +365,6 @@ export const masterListSisters = {
   vita_mikhailov: {
     assignments: ["intial", "return", "householder"],
     russianName: "Вита Михайлова",
-  },
-  kristina_aksentyeva: {
-    assignments: ["initial", "return", "householder"],
-    russianName: "Кристина Аксентьева",
   },
   // zamira_asimova: {
   //     assignments: ["initial", "return", "householder"],
@@ -428,9 +424,7 @@ export const chooseBrother = (assign) => {
         counter += 1;
         if (counter === copy.length) {
           let broNames = onlyBrothersNames.slice(0);
-          copy = broNames.filter(
-            (val) => !removedBrothersNames.includes(val)
-          ); //onlyBrothersNames.slice(0);
+          copy = broNames.filter((val) => !removedBrothersNames.includes(val)); //onlyBrothersNames.slice(0);
         }
         return test();
       } else if (assignment && el && arrayNames.length < 1) {
@@ -448,9 +442,7 @@ export const chooseBrother = (assign) => {
         counter += 1;
         if (counter === copy.length) {
           let broNames = onlyBrothersNames.slice(0);
-          copy = broNames.filter(
-            (val) => !removedBrothersNames.includes(val)
-          ); //onlyBrothersNames.slice(0);
+          copy = broNames.filter((val) => !removedBrothersNames.includes(val)); //onlyBrothersNames.slice(0);
         }
         return test();
       } else {
