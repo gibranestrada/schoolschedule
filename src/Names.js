@@ -221,9 +221,9 @@ export const masterListSisters = {
     assignments: ["initial", "householder", "return", "bibleStudy"],
     russianName: "Лариса Михайлова",
   },
-  angelina_pesakova: {
+  angelina_igumnov: {
     assignments: ["initial", "householder", "return", "bibleStudy"],
-    russianName: "Анжелина Пейсакова",
+    russianName: "Анжелина Игумнова",
   },
   maria_chirkova: {
     assignments: ["householder"],
