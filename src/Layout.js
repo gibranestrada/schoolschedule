@@ -29,8 +29,14 @@ const Layout = () => {
   const submitHandler = (e) => {
     e.persist();
     e.preventDefault();
-    const combineArraysSisters = [...removedSistersNames, ...tajikSisters].filter((v, i, a) => a.indexOf(v) === i);
-    const combineArraysBrothers = [...removedBrothersNames, ...tajikBrothers].filter((v, i, a) => a.indexOf(v) === i);
+    const combineArraysSisters = [
+      ...removedSistersNames,
+      ...tajikSisters,
+    ].filter((v, i, a) => a.indexOf(v) === i);
+    const combineArraysBrothers = [
+      ...removedBrothersNames,
+      ...tajikBrothers,
+    ].filter((v, i, a) => a.indexOf(v) === i);
     names.removeBrothersNames(combineArraysBrothers);
     names.removeSistersNames(combineArraysSisters);
     const assignedNames = Object.keys(schoolOptions).map((value) => {
@@ -77,13 +83,13 @@ const Layout = () => {
       }
     });
     const newArray = { firstSchool: [], secondSchool: [] };
-    assignedNames.forEach(value => {
-      if (value.hasOwnProperty('firstSchool')) {
+    assignedNames.forEach((value) => {
+      if (value.hasOwnProperty("firstSchool")) {
         newArray.firstSchool.push(value.firstSchool);
       } else {
         newArray.secondSchool.push(value.secondSchool);
       }
-    })
+    });
     finalNames = newArray;
   };
   const changeAssignmentString = (assign) => {
@@ -120,7 +126,6 @@ const Layout = () => {
         };
       }
     }
-
   };
   const tajikHandler = (e) => {
     e.persist();
@@ -133,7 +138,7 @@ const Layout = () => {
         "dilnoza_otozhonova",
         "erkenai_joraeva",
         "ruhafzo_joraeva",
-        "khidoyat_asimova"
+        "ganimat_bekmamadova",
       ];
       tajikBrothers = [
         "alijon_davlyatov",
@@ -143,7 +148,7 @@ const Layout = () => {
         "akhmad_davlyatov",
         "babajon_gurbandurdiev",
         "akmal_davlyatov",
-        "dilovar_babahanov"
+        "dilovar_babahanov",
       ];
     } else {
       tajikSisters = [];
@@ -171,14 +176,9 @@ const Layout = () => {
       finalNames.firstSchool.forEach((value) => {
         let name = combineNames[value.assignedTo].russianName;
         let householder = combineNames?.[value.houseHolder]?.russianName;
-        blob += `${russianAssign[value.assignment]}: ${
-          name
-          } ${
-          householder
-            ? " / " +
-            householder
-            : ""
-          } \r\n `;
+        blob += `${russianAssign[value.assignment]}: ${name} ${
+          householder ? " / " + householder : ""
+        } \r\n `;
       });
       finalNames.secondSchool.forEach((value) => {
         let name = combineNames[value.assignedTo].russianName;
@@ -187,14 +187,9 @@ const Layout = () => {
           counter += 1;
           blob += `\r\n ${russianAssign.secondSchool} \r\n `;
         }
-        blob += `${russianAssign[value.assignment]}: ${
-          name
-          } ${
-          householder
-            ? " / " +
-            householder
-            : ""
-          } \r\n `;
+        blob += `${russianAssign[value.assignment]}: ${name} ${
+          householder ? " / " + householder : ""
+        } \r\n `;
       });
       console.log(blob);
       var blob2 = new Blob([blob], {
