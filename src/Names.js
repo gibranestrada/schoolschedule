@@ -226,6 +226,14 @@ export const masterListBrothers = {
     assignments: ["reading", "initial", "householder", "return"],
     russianName: "Кирилл Ступко",
   },
+  evgeniy_krasnoshapka: {
+    assignments: ["initial", "householder", "return", "bibleStudy", "talk"],
+    russianName: "Евгений Красношапка",
+  },
+  aleksandr_ragulin: {
+    assignments: ["reading",],
+    russianName: "Александр Рагулин",
+  },
   // azimjon_kacimov: {
   //     assignments: ["initial", "housholder"],
   //     russianName: "Азимджон Касимов"
@@ -457,6 +465,10 @@ export const masterListSisters = {
   valeria_krasnoshapka: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Валерия Красношапка",
+  },
+  evgeniya_krasnoshapka: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Евгения Красношапка",
   },
   marina_vasileva: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
