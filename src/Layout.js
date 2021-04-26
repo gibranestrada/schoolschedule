@@ -37,6 +37,7 @@ const Layout = () => {
       ...removedBrothersNames,
       ...tajikBrothers,
     ].filter((v, i, a) => a.indexOf(v) === i);
+
     names.removeBrothersNames(combineArraysBrothers);
     names.removeSistersNames(combineArraysSisters);
     const assignedNames = Object.keys(schoolOptions).map((value) => {
@@ -90,6 +91,7 @@ const Layout = () => {
         newArray.secondSchool.push(value.secondSchool);
       }
     });
+    console.log(removedBrothersNames, removedSistersNames, assignedNames);
     finalNames = newArray;
   };
   const changeAssignmentString = (assign) => {
@@ -125,6 +127,8 @@ const Layout = () => {
           school: e.target.className,
         };
       }
+    }else{
+      e.preventDefault();
     }
   };
   const tajikHandler = (e) => {
@@ -157,6 +161,7 @@ const Layout = () => {
   };
   const setDate = (e) => {
     e.persist();
+    e.preventDefault();
     if (e.target.id === "day") {
       date.day = e.target.value;
     } else if (e.target.id === "month") {
@@ -192,10 +197,10 @@ const Layout = () => {
         } \r\n `;
       });
       console.log(blob);
-      var blob2 = new Blob([blob], {
-        type: "text/plain;charset=utf-8",
-      });
-      FileSaver.saveAs(blob2, `${date.day}-${date.month}.txt`);
+      // var blob2 = new Blob([blob], {
+      //   type: "text/plain;charset=utf-8",
+      // });
+      // FileSaver.saveAs(blob2, `${date.day}-${date.month}.txt`);
     } else {
       alert("Select assignments first");
     }

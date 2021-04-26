@@ -7,7 +7,6 @@ const RemoveNames = ({ removedBrothersNames, removedSistersNames }) => {
   const sistersList = Object.keys(names.masterListSisters).sort();
   const removedNamesHandler = (e) => {
     e.persist();
-    
     if (e.target.type === "checkbox") {
       if (e.target.className === "sister") {
         if (removedSistersNames.includes(e.target.id)) {
@@ -26,6 +25,8 @@ const RemoveNames = ({ removedBrothersNames, removedSistersNames }) => {
           removedBrothersNames.push(e.target.id);
         }
       }
+    }else{
+      e.preventDefault();
     }
   };
 
