@@ -1,16 +1,19 @@
 /* eslint-disable no-unused-expressions */
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Layout.module.css";
 import * as names from "./Names";
 import RemoveNames from "./removeNames";
 var FileSaver = require("file-saver");
 
 const Layout = () => {
-  let schoolOptions = {};
-  let removedBrothersNames = [];
-  let removedSistersNames = [];
-  let tajikSisters = [];
-  let tajikBrothers = [];
+  const [schoolOptions, setSchoolOptions] = useState({});
+  const [removedBrothersNames, setRemovedBrothersNames] = useState([]);
+  const [removedSistersNames, setRemovedSistersNames] = useState([]);
+  const [tajikSisters, setTajikSisters] = useState([]);
+  const [tajikBrothers, setTajikBrothers] = useState([]);
+  const [finalNames, setFinalNames] = useState({});
+  const [date, setDate] = useState({ day: "", month: "" });
+
   const russianAssign = {
     reading: "Чтение",
     initial: "1й разговор",
@@ -23,8 +26,6 @@ const Layout = () => {
     firstSchool: "ШКОЛА",
     secondSchool: "2АЯ ШКОЛА",
   };
-  const date = { day: "", month: "" };
-  let finalNames = {};
 
   const submitHandler = (e) => {
     e.persist();
@@ -92,7 +93,7 @@ const Layout = () => {
       }
     });
     console.log(removedBrothersNames, removedSistersNames, assignedNames);
-    finalNames = newArray;
+    setFinalNames(newArray);
   };
   const changeAssignmentString = (assign) => {
     let newStr;
@@ -120,21 +121,23 @@ const Layout = () => {
     e.persist();
     if (e.target.type === "radio") {
       if (e.target.value === "no") {
-        delete schoolOptions[e.target.name];
+        const copyOfSchoolOptions = {...schoolOptions};
+        delete copyOfSchoolOptions[e.target.name];
+        setSchoolOptions({...copyOfSchoolOptions});
       } else {
-        schoolOptions[e.target.name] = {
-          assignment: e.target.value,
-          school: e.target.className,
-        };
+        setSchoolOptions((s)=> {return {...s, 
+          [e.target.name]: {assignment: e.target.value, school: e.target.className}}})
       }
-    }else{
+    }else if(e.target.nextSibling.type !== "radio"){
       e.preventDefault();
     }
   };
+  //console.log("school option after", schoolOptions)
   const tajikHandler = (e) => {
     e.persist();
+    console.log("tajikHandler", e.target.checked)
     if (e.target.checked) {
-      tajikSisters = [
+      setTajikSisters(() => [
         "nisso_davlyatova",
         "farzona_asimova",
         "khidoyat_asimova",
@@ -143,8 +146,8 @@ const Layout = () => {
         "erkenai_joraeva",
         "ruhafzo_joraeva",
         "ganimat_bekmamadova",
-      ];
-      tajikBrothers = [
+      ]);
+      setTajikBrothers(()=> [
         "alijon_davlyatov",
         "kahor_otozhonov",
         "abdulla_kadirov",
@@ -153,20 +156,25 @@ const Layout = () => {
         "babajon_gurbandurdiev",
         "akmal_davlyatov",
         "dilovar_babahanov",
-      ];
+      ]);
     } else {
-      tajikSisters = [];
-      tajikBrothers = [];
+      setTajikSisters(() => []);
+      setTajikBrothers(()=> []);
     }
+    console.log("tajikHandler after", tajikBrothers, tajikSisters)
   };
-  const setDate = (e) => {
+  const setDateHandler = (e) => {
     e.persist();
     e.preventDefault();
+    console.log("setDate", date)
     if (e.target.id === "day") {
-      date.day = e.target.value;
+      setDate((s)=> {return {...s, day: e.target.value}})
+      //date.day = e.target.value;
     } else if (e.target.id === "month") {
-      date.month = e.target.value;
+      setDate((s)=> {return {...s, month: e.target.value}})
+      //date.month = e.target.value;
     }
+    console.log("setDate after", date)
   };
   const russianNameBrothers = names.masterListBrothers;
   const russianNameSisters = names.masterListSisters;
@@ -225,6 +233,8 @@ const Layout = () => {
           <label htmlFor="tajik">Tajik</label>
         </div>
         <RemoveNames
+          broNames = {setRemovedBrothersNames}
+          sisNames = {setRemovedSistersNames}
           removedBrothersNames={removedBrothersNames}
           removedSistersNames={removedSistersNames}
         />
@@ -237,155 +247,169 @@ const Layout = () => {
         >
           <div>
             <p>Reading</p>
-            <label>Brothers</label>
+            <label htmlFor="reading1">Brothers</label>
             <input
+              id="reading1"
               className="firstSchool"
               type="radio"
               value="brother"
               name="reading"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="reading" required />
+            <label htmlFor="reading2">No</label>
+            <input id="reading2" type="radio" value="no" name="reading" required />
           </div>
           <div>
             <p>Initial Call</p>
-            <label>Brothers</label>
+            <label htmlFor="initialCall1">Brothers</label>
             <input
+              id="initialCall1"
               className="firstSchool"
               type="radio"
               value="brother"
               name="initial"
               required
             />
-            <label>Sisters</label>
+            <label htmlFor="initialCall2">Sisters</label>
             <input
+              id="initialCall2"
               className="firstSchool"
               type="radio"
               value="sister"
               name="initial"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="initial" required />
+            <label htmlFor="initialCall3">No</label>
+            <input id="initialCall3" type="radio" value="no" name="initial" required />
           </div>
           <div>
             <p>Initial Call 2</p>
-            <label>Brothers</label>
+            <label htmlFor="2initialCall1">Brothers</label>
             <input
+              id="2initialCall1"
               className="firstSchool"
               type="radio"
               value="brother"
               name="initial2"
               required
             />
-            <label>Sisters</label>
+            <label htmlFor="2initialCall2">Sisters</label>
             <input
+              id="2initialCall2"
               className="firstSchool"
               type="radio"
               value="sister"
               name="initial2"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="initial2" required />
+            <label htmlFor="2initialCall3">No</label>
+            <input id="2initialCall3" type="radio" value="no" name="initial2" required />
           </div>
           <div>
             <p>Initial Call 3</p>
-            <label>Brothers</label>
+            <label htmlFor="3initialCall1">Brothers</label>
             <input
+              id="3initialCall1"
               className="firstSchool"
               type="radio"
               value="brother"
               name="initial3"
               required
             />
-            <label>Sisters</label>
+            <label htmlFor="3initialCall2">Sisters</label>
             <input
+              id="3initialCall2"
               className="firstSchool"
               type="radio"
               value="sister"
               name="initial3"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="initial3" required />
+            <label htmlFor="3initialCall3">No</label>
+            <input id="3initialCall3" type="radio" value="no" name="initial3" required />
           </div>
           <div>
             <p>Return Visit</p>
-            <label>Brothers</label>
+            <label htmlFor="returnVisit1">Brothers</label>
             <input
+              id="returnVisit1"
               className="firstSchool"
               type="radio"
               value="brother"
               name="return"
               required
             />
-            <label>Sisters</label>
+            <label htmlFor="returnVisit2">Sisters</label>
             <input
+              id="returnVisit2"
               className="firstSchool"
               type="radio"
               value="sister"
               name="return"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="return" required />
+            <label htmlFor="returnVisit3">No</label>
+            <input id="returnVisit3" type="radio" value="no" name="return" required />
           </div>
           <div>
             <p>Return Visit 2</p>
-            <label>Brothers</label>
+            <label htmlFor="2returnVisit1">Brothers</label>
             <input
+              id="2returnVisit1"
               className="firstSchool"
               type="radio"
               value="brother"
               name="return2"
               required
             />
-            <label>Sisters</label>
+            <label htmlFor="2returnVisit2">Sisters</label>
             <input
+              id="2returnVisit2"
               className="firstSchool"
               type="radio"
               value="sister"
               name="return2"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="return2" required />
+            <label htmlFor="2returnVisit3">No</label>
+            <input id="2returnVisit3" type="radio" value="no" name="return2" required />
           </div>
           <div>
             <p>Bible Study</p>
-            <label>Brothers</label>
+            <label htmlFor="bibleStudy1">Brothers</label>
             <input
+              id="bibleStudy1"
               className="firstSchool"
               type="radio"
               value="brother"
               name="bibleStudy"
               required
             />
-            <label>Sisters</label>
+            <label htmlFor="bibleStudy2">Sisters</label>
             <input
+              id="bibleStudy2"
               className="firstSchool"
               type="radio"
               value="sister"
               name="bibleStudy"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="bibleStudy" required />
+            <label htmlFor="bibleStudy3">No</label>
+            <input id="bibleStudy3" type="radio" value="no" name="bibleStudy" required />
           </div>
           <div>
             <p>Talk</p>
-            <label>Brothers</label>
+            <label htmlFor="talk1">Brothers</label>
             <input
+              id="talk1"
               className="firstSchool"
               type="radio"
               value="brother"
               name="talk"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="talk" required />
+            <label htmlFor="talk2">No</label>
+            <input id="talk2" type="radio" value="no" name="talk" required />
           </div>
         </div>
         <p style={{ fontSize: "22px", fontWeight: 600, marginBottom: "0px" }}>
@@ -397,158 +421,160 @@ const Layout = () => {
         >
           <div>
             <p>Reading</p>
-            <label>Brothers</label>
+            <label htmlFor="2ndreading1">Brothers</label>
             <input
+              id="2ndreading1"
               className="secondSchool"
               type="radio"
               value="brother"
               name="reading2"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="reading2" required />
+            <label htmlFor="2ndreading2">No</label>
+            <input id="2ndreading2" type="radio" value="no" name="reading2" required />
           </div>
           <div>
             <p>Initial Call</p>
-            <label>Brothers</label>
+            <label htmlFor="2ndinitialCall1">Brothers</label>
             <input
+              id="2ndinitialCall1"
               className="secondSchool"
               type="radio"
               value="brother"
               name="2ndinitial"
               required
             />
-            <label>Sisters</label>
-            <input
+            <label htmlFor="2ndinitialCall2">Sisters</label>
+            <input id="2ndinitialCall2"
               className="secondSchool"
               type="radio"
               value="sister"
               name="2ndinitial"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="2ndinitial" required />
+            <label htmlFor="2ndinitialCall3">No</label>
+            <input id="2ndinitialCall3" type="radio" value="no" name="2ndinitial" required />
           </div>
           <div>
             <p>Initial Call 2</p>
-            <label>Brothers</label>
-            <input
+            <label htmlFor="2ndinitialCall21">Brothers</label>
+            <input id="2ndinitialCall21"
               className="secondSchool"
               type="radio"
               value="brother"
               name="2ndinitial2"
               required
             />
-            <label>Sisters</label>
-            <input
+            <label htmlFor="2ndinitialCall22">Sisters</label>
+            <input id="2ndinitialCall22"
               className="secondSchool"
               type="radio"
               value="sister"
               name="2ndinitial2"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="2ndinitial2" required />
+            <label htmlFor="2ndinitialCall23">No</label>
+            <input id="2ndinitialCall23" type="radio" value="no" name="2ndinitial2" required />
           </div>
           <div>
             <p>Initial Call 3</p>
-            <label>Brothers</label>
-            <input
+            <label htmlFor="2ndinitialCall31">Brothers</label>
+            <input id="2ndinitialCall31"
               className="secondSchool"
               type="radio"
               value="brother"
               name="2ndinitial3"
               required
             />
-            <label>Sisters</label>
-            <input
+            <label htmlFor="ic32">Sisters</label>
+            <input id="ic32"
               className="secondSchool"
               type="radio"
               value="sister"
               name="2ndinitial3"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="2ndinitial3" required />
+            <label htmlFor="ic33">No</label>
+            <input id="ic33" type="radio" value="no" name="2ndinitial3" required />
           </div>
           <div>
             <p>Return Visit</p>
-            <label>Brothers</label>
-            <input
+            <label htmlFor="rv1">Brothers</label>
+            <input id="rv1"
               className="secondSchool"
               type="radio"
               value="brother"
               name="2ndreturn"
               required
             />
-            <label>Sisters</label>
-            <input
+            <label htmlFor="rv2">Sisters</label>
+            <input id="rv2"
               className="secondSchool"
               type="radio"
               value="sister"
               name="2ndreturn"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="2ndreturn" required />
+            <label htmlFor="rv3">No</label>
+            <input id="rv3" type="radio" value="no" name="2ndreturn" required />
           </div>
           <div>
             <p>Return Visit 2</p>
-            <label>Brothers</label>
-            <input
+            <label htmlFor="rv21">Brothers</label>
+            <input id="rv21"
               className="secondSchool"
               type="radio"
               value="brother"
               name="2ndreturn2"
               required
             />
-            <label>Sisters</label>
-            <input
+            <label htmlFor="rv22">Sisters</label>
+            <input id="rv22"
               className="secondSchool"
               type="radio"
               value="sister"
               name="2ndreturn2"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="2ndreturn2" required />
+            <label htmlFor="rv23">No</label>
+            <input id="rv23" type="radio" value="no" name="2ndreturn2" required />
           </div>
           <div>
             <p>Bible Study</p>
-            <label>Brothers</label>
-            <input
+            <label htmlFor="bs1">Brothers</label>
+            <input id="bs1"
               className="secondSchool"
               type="radio"
               value="brother"
               name="bibleStudy2"
               required
             />
-            <label>Sisters</label>
-            <input
+            <label htmlFor="bs2">Sisters</label>
+            <input id="bs2"
               className="secondSchool"
               type="radio"
               value="sister"
               name="bibleStudy2"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="bibleStudy2" required />
+            <label htmlFor="bs3">No</label>
+            <input id="bs3" type="radio" value="no" name="bibleStudy2" required />
           </div>
           <div>
             <p>Talk</p>
-            <label>Brothers</label>
-            <input
+            <label htmlFor="t1">Brothers</label>
+            <input id="t1"
               className="secondSchool"
               type="radio"
               value="brother"
               name="talk2"
               required
             />
-            <label>No</label>
-            <input type="radio" value="no" name="talk2" required />
+            <label htmlFor="t2">No</label>
+            <input id="t2" type="radio" value="no" name="talk2" required />
           </div>
         </div>
-        <div onChange={setDate} className={styles.submitReset}>
+        <div onChange={setDateHandler} className={styles.submitReset}>
           <button onClick={resetHandler}>Reset</button>
           <input type="submit" value="Submit" />
           <input

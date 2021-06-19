@@ -174,17 +174,17 @@ export const masterListBrothers = {
     assignments: ["reading", "initial", "householder", "return"],
     russianName: "Абдулла Кадыров",
   },
-  fedor_chistyakov: {
-    assignments: [
-      "reading",
-      "return",
-      "talk",
-      "householder",
-      "bibleStudy",
-      "initial",
-    ],
-    russianName: "федор Честяков",
-  },
+  // fedor_chistyakov: {
+  //   assignments: [
+  //     "reading",
+  //     "return",
+  //     "talk",
+  //     "householder",
+  //     "bibleStudy",
+  //     "initial",
+  //   ],
+  //   russianName: "федор Честяков",
+  // },
   kahor_otozhonov: {
     assignments: [
       "reading",
@@ -275,7 +275,7 @@ export const masterListSisters = {
   },
   baktygul_saberkulova: {
     assignments: ["initial", "householder", "return", "bibleStudy"],
-    russianName: "Бактыгуль Саберкулова",
+    russianName: "Бактыгул Сабыркулова",
   },
   natalya_nikolaeva: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
@@ -406,10 +406,10 @@ export const masterListSisters = {
     assignments: ["return", "bibleStudy", "householder", "initial"],
     russianName: "Глория Бенхет",
   },
-  elena_chistyakova: {
-    assignments: ["bibleStudy", "householder", "initial", "return"],
-    russianName: "Лена Чистякова",
-  },
+  // elena_chistyakova: {
+  //   assignments: ["bibleStudy", "householder", "initial", "return"],
+  //   russianName: "Лена Чистякова",
+  // },
   dilnoza_otozhonova: {
     assignments: ["bibleStudy", "householder", "initial", "return"],
     russianName: "Дилноза Отоженова",
