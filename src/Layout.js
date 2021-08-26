@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import React from "react";
+import React, {useState} from "react";
 import styles from "./Layout.module.css";
 import * as names from "./Names";
 import RemoveNames from "./removeNames";
@@ -7,10 +7,10 @@ var FileSaver = require("file-saver");
 
 const Layout = () => {
   let schoolOptions = {};
-  let removedBrothersNames = [];
-  let removedSistersNames = [];
-  let tajikSisters = [];
-  let tajikBrothers = [];
+  const [removedBrothersNames, setRemovedBrothersNames] = useState([]);
+  const [removedSistersNames, setRemovedSistersNames] = useState([]);
+  const [tajikSisters, setTajikSisters] = useState([]);
+  const [tajikBrothers, setTajikBrothers] = useState([]);
   const russianAssign = {
     reading: "Чтение",
     initial: "1й разговор",
@@ -31,6 +31,7 @@ const Layout = () => {
     e.preventDefault();
     const combineArraysSisters = [...removedSistersNames, ...tajikSisters].filter((v, i, a) => a.indexOf(v) === i);
     const combineArraysBrothers = [...removedBrothersNames, ...tajikBrothers].filter((v, i, a) => a.indexOf(v) === i);
+    console.log(combineArraysSisters, combineArraysBrothers);
     names.removeBrothersNames(combineArraysBrothers);
     names.removeSistersNames(combineArraysSisters);
     const assignedNames = Object.keys(schoolOptions).map((value) => {
@@ -104,9 +105,6 @@ const Layout = () => {
 
     return newStr;
   };
-  const resetHandler = () => {
-    window.location.reload();
-  };
 
   const schoolOptionsHandler = (e) => {
     e.persist();
@@ -125,7 +123,7 @@ const Layout = () => {
   const tajikHandler = (e) => {
     e.persist();
     if (e.target.checked) {
-      tajikSisters = [
+      setTajikSisters(s => [
         "nisso_davlyatova",
         "farzona_asimova",
         "khidoyat_asimova",
@@ -133,9 +131,10 @@ const Layout = () => {
         "dilnoza_otozhonova",
         "erkenai_joraeva",
         "ruhafzo_joraeva",
-        "khidoyat_asimova"
-      ];
-      tajikBrothers = [
+        "khidoyat_asimova",
+        "ganimat_bekmamadova"
+      ])
+      setTajikBrothers(s=> [
         "alijon_davlyatov",
         "kahor_otozhonov",
         "abdulla_kadirov",
@@ -144,10 +143,10 @@ const Layout = () => {
         "babajon_gurbandurdiev",
         "akmal_davlyatov",
         "dilovar_babahanov"
-      ];
+      ])
     } else {
-      tajikSisters = [];
-      tajikBrothers = [];
+      setTajikSisters(s => []);
+      setTajikBrothers(s => []);
     }
   };
   const setDate = (e) => {
@@ -227,6 +226,8 @@ const Layout = () => {
         <RemoveNames
           removedBrothersNames={removedBrothersNames}
           removedSistersNames={removedSistersNames}
+          setBro= {setRemovedBrothersNames}
+          setSis={setRemovedSistersNames}
         />
         <p style={{ fontSize: "22px", fontWeight: 600, marginBottom: "0px" }}>
           First School
@@ -549,7 +550,6 @@ const Layout = () => {
           </div>
         </div>
         <div onChange={setDate} className={styles.submitReset}>
-          <button onClick={resetHandler}>Reset</button>
           <input type="submit" value="Submit" />
           <input
             style={{ fontSize: "12px", width: "60px", cursor: "auto" }}

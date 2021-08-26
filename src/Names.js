@@ -26,10 +26,10 @@ export const masterListBrothers = {
     assignments: ["initial", "reading", "return", "talk", "householder"],
     russianName: "Вадим Клименко",
   },
-  georgiy_pleev: {
-    assignments: ["initial", "reading", "return", "householder"],
-    russianName: "Георгий Плиев",
-  },
+  // georgiy_pleev: {
+  //   assignments: ["initial", "reading", "return", "householder"],
+  //   russianName: "Георгий Плиев",
+  // },
   pavel_nedbailov: {
     assignments: ["reading", "initial", "return", "householder", "talk"],
     russianName: "Павел Недбайлов",
@@ -104,17 +104,17 @@ export const masterListBrothers = {
     assignments: ["reading", "initial", "householder", "return"],
     russianName: "Абдулла Кадыров",
   },
-  fedor_chistyakov: {
-    assignments: [
-      "reading",
-      "return",
-      "talk",
-      "householder",
-      "bibleStudy",
-      "initial",
-    ],
-    russianName: "федор Честяков",
-  },
+  // fedor_chistyakov: {
+  //   assignments: [
+  //     "reading",
+  //     "return",
+  //     "talk",
+  //     "householder",
+  //     "bibleStudy",
+  //     "initial",
+  //   ],
+  //   russianName: "федор Честяков",
+  // },
   kahor_otozhonov: {
     assignments: ["reading", "talk", "initial", "householder", "return"],
     russianName: "Кахор Отоженов",
@@ -314,10 +314,10 @@ export const masterListSisters = {
     assignments: ["return", "bibleStudy", "householder", "initial"],
     russianName: "Глория Бенхет",
   },
-  elena_chistyakova: {
-    assignments: ["bibleStudy", "householder", "initial", "return"],
-    russianName: "Лена Чистякова",
-  },
+  // elena_chistyakova: {
+  //   assignments: ["bibleStudy", "householder", "initial", "return"],
+  //   russianName: "Лена Чистякова",
+  // },
   dilnoza_otozhonova: {
     assignments: ["bibleStudy", "householder", "initial", "return"],
     russianName: "Дилноза Отоженова",
@@ -330,10 +330,10 @@ export const masterListSisters = {
     assignments: ["householder", "initial", "return", "bibleStudy"],
     russianName: "Тамано Давлятова",
   },
-  // ganimat_bekmamadova: {
-  //     assignments: ["householder", "initial", "return", "bibleStudy"],
-  //      russianName: "Ганимат Бекмамадова",
-  // },
+  ganimat_bekmamadova: {
+      assignments: ["householder", "initial", "return", "bibleStudy"],
+       russianName: "Ганимат Бекмамадова",
+  },
   lena_grigoreva: {
     assignments: ["householder"],
     russianName: "Лена Григорьева",
