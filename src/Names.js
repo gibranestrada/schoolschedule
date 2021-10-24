@@ -359,10 +359,6 @@ export const masterListSisters = {
     assignments: ["return", "householder", "initial", "bibleStudy"],
     russianName: "Наталья Видулина",
   },
-  barbara_gelen: {
-    assignments: ["return", "householder", "initial", "bibleStudy"],
-    russianName: "Барбара Гелен",
-  },
   stephanie_st_louis: {
     assignments: ["return", "initial", "householder", "bibleStudy"],
     russianName: "Стефани СентЛуис",
@@ -402,10 +398,6 @@ export const masterListSisters = {
   ganimat_bekmamadova: {
     assignments: ["householder", "initial", "return", "bibleStudy"],
     russianName: "Ганимат Бекмамадова",
-  },
-  kristina_sulik: {
-    assignments: ["initial", "return", "householder", "bibleStudy"],
-    russianName: "Кристина Сулик",
   },
   kristina_rechkalova: {
     assignments: ["initial", "return", "householder"],
@@ -451,15 +443,7 @@ export const masterListSisters = {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Инна Круглая",
   },
-  // zamira_asimova: {
-  //     assignments: ["initial", "return", "householder"],
-  //     russianName: "Замира асимова"
-  // },
-  // raxima_asimova: {
-  //     assignments: ["initial", "return", "householder"],
-  //     russianName: "Рахима асимова"
-  // }
-  //not used Virginia Gilbert, Luba Gorina, Inna Kruglaya, gulzhikhan_galeeva
+  //not used Virginia Gilbert, Luba Gorina, Inna Kruglaya, gulzhikhan_galeeva, kristina sulyk, barbara gelen
 };
 let onlyBrothersNames = Object.keys(masterListBrothers);
 let onlySistersNames = Object.keys(masterListSisters);
