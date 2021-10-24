@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styles from "./Layout.module.css";
 import * as names from "./Names";
 import RemoveNames from "./removeNames";
-var FileSaver = require("file-saver");
+//var FileSaver = require("file-saver");
 
 const Layout = () => {
   const [schoolOptions, setSchoolOptions] = useState({});
@@ -113,6 +113,9 @@ const Layout = () => {
 
     return newStr;
   };
+  const resetHandler = () => {
+    window.location.reload();
+  };
 
   const schoolOptionsHandler = (e) => {
     e.persist();
@@ -166,8 +169,10 @@ const Layout = () => {
     console.log("setDate", date)
     if (e.target.id === "day") {
       setDate((s)=> {return {...s, day: e.target.value}})
+      //date.day = e.target.value;
     } else if (e.target.id === "month") {
       setDate((s)=> {return {...s, month: e.target.value}})
+      //date.month = e.target.value;
     }
     console.log("setDate after", date)
   };
@@ -232,8 +237,6 @@ const Layout = () => {
           sisNames = {setRemovedSistersNames}
           removedBrothersNames={removedBrothersNames}
           removedSistersNames={removedSistersNames}
-          setBro= {setRemovedBrothersNames}
-          setSis={setRemovedSistersNames}
         />
         <p style={{ fontSize: "22px", fontWeight: 600, marginBottom: "0px" }}>
           First School
