@@ -33,10 +33,6 @@ export const masterListBrothers = {
     ],
     russianName: "Вадим Клименко",
   },
-  georgiy_pleev: {
-    assignments: ["initial", "reading", "return", "householder"],
-    russianName: "Георгий Плиев",
-  },
   pavel_nedbailov: {
     assignments: [
       "reading",
@@ -174,17 +170,6 @@ export const masterListBrothers = {
     assignments: ["reading", "initial", "householder", "return"],
     russianName: "Абдулла Кадыров",
   },
-  // fedor_chistyakov: {
-  //   assignments: [
-  //     "reading",
-  //     "return",
-  //     "talk",
-  //     "householder",
-  //     "bibleStudy",
-  //     "initial",
-  //   ],
-  //   russianName: "федор Честяков",
-  // },
   kahor_otozhonov: {
     assignments: [
       "reading",
@@ -234,10 +219,6 @@ export const masterListBrothers = {
     assignments: ["reading",],
     russianName: "Александр Рагулин",
   },
-  // azimjon_kacimov: {
-  //     assignments: ["initial", "housholder"],
-  //     russianName: "Азимджон Касимов"
-  // },
 };
 export const masterListSisters = {
   maria_drozdova: {
@@ -330,7 +311,7 @@ export const masterListSisters = {
     russianName: "татьяна даниелсон",
   },
   angelika_estrada: {
-    assignments: ["initial", "return", "householder"], //bibleStudy
+    assignments: ["initial", "return", "householder"],
     exceptions: ["only 2nd school"],
     russianName: "Ангелика Эстрада",
   },
@@ -406,10 +387,6 @@ export const masterListSisters = {
     assignments: ["return", "bibleStudy", "householder", "initial"],
     russianName: "Глория Бенхет",
   },
-  // elena_chistyakova: {
-  //   assignments: ["bibleStudy", "householder", "initial", "return"],
-  //   russianName: "Лена Чистякова",
-  // },
   dilnoza_otozhonova: {
     assignments: ["bibleStudy", "householder", "initial", "return"],
     russianName: "Дилноза Отоженова",
@@ -426,10 +403,6 @@ export const masterListSisters = {
     assignments: ["householder", "initial", "return", "bibleStudy"],
     russianName: "Ганимат Бекмамадова",
   },
-  // lena_grigoreva: {
-  //   assignments: ["householder"],
-  //   russianName: "Лена Григорьева",
-  // },
   kristina_sulik: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Кристина Сулик",
@@ -496,7 +469,7 @@ let removedBrothersNames = [];
 let removedSistersNames = [];
 
 export const removeBrothersNames = (array) => {
-  copyBrothersNames = onlyBrothersNames.slice(0); // copyBrothersNames = onlyBrothersNames.slice(0);
+  copyBrothersNames = onlyBrothersNames.slice(0);
   copyBrothersNames = copyBrothersNames.filter((val) => !array.includes(val));
   removedBrothersNames = [];
 };
@@ -511,7 +484,7 @@ export const chooseBrother = (assign) => {
   const arrayNames = [];
   let counter = 0;
   const randomNoRepeats = (array) => {
-    var copy = array; // array.slice(0);
+    var copy = array;
     return function test() {
       if (copy.length < 1) {
         let broNames = onlyBrothersNames.slice(0);
@@ -519,7 +492,7 @@ export const chooseBrother = (assign) => {
           (val) => !removedBrothersNames.includes(val)
         );
         copy = copyBrothersNames;
-      } // onlyBrothersNames.slice(0) array.slice(0); }
+      }
       var index = Math.floor(Math.random() * copy.length);
       var item = copy[index];
       let el;
@@ -536,7 +509,7 @@ export const chooseBrother = (assign) => {
         counter += 1;
         if (counter === copy.length) {
           let broNames = onlyBrothersNames.slice(0);
-          copy = broNames.filter((val) => !removedBrothersNames.includes(val)); //onlyBrothersNames.slice(0);
+          copy = broNames.filter((val) => !removedBrothersNames.includes(val));
         }
         return test();
       } else if (assignment && el && arrayNames.length < 1) {
@@ -554,7 +527,7 @@ export const chooseBrother = (assign) => {
         counter += 1;
         if (counter === copy.length) {
           let broNames = onlyBrothersNames.slice(0);
-          copy = broNames.filter((val) => !removedBrothersNames.includes(val)); //onlyBrothersNames.slice(0);
+          copy = broNames.filter((val) => !removedBrothersNames.includes(val));
         }
         return test();
       } else {
@@ -572,14 +545,14 @@ export const chooseSister = (assign) => {
   const arrayNames = [];
   let counter = 0;
   const randomNoRepeats = (array) => {
-    var copy = array; // array.slice(0);
+    var copy = array;
     return function test() {
       if (copy.length < 1) {
         copySistersNames = onlySistersNames.filter(
           (val) => !removedSistersNames.includes(val)
         );
         copy = copySistersNames;
-      } //onlySistersNames.slice(0) array.slice(0); }
+      }
       var index = Math.floor(Math.random() * copy.length);
       var item = copy[index];
       let el;
@@ -597,7 +570,7 @@ export const chooseSister = (assign) => {
         if (counter === copy.length) {
           copy = onlySistersNames.filter(
             (val) => !removedSistersNames.includes(val)
-          ); // onlySistersNames.slice(0);
+          );
         }
         return test();
       } else if (assignment && el && arrayNames.length < 1) {
@@ -616,7 +589,7 @@ export const chooseSister = (assign) => {
         if (counter === copy.length) {
           copy = onlySistersNames.filter(
             (val) => !removedSistersNames.includes(val)
-          ); // onlySistersNames.slice(0);
+          );
         }
         return test();
       } else {
