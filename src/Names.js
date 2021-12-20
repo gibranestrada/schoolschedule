@@ -215,9 +215,23 @@ export const masterListBrothers = {
     assignments: ["initial", "householder", "return", "bibleStudy", "talk"],
     russianName: "Евгений Красношапка",
   },
-  aleksandr_ragulin: {
-    assignments: ["reading",],
-    russianName: "Александр Рагулин",
+  aleksandr_loshkarov: {
+    assignments: ["reading",
+    "initial",
+    "householder",
+    "return",
+    "bibleStudy",
+    "talk",],
+    russianName: "Александр Лошкарев",
+  },
+  evgeniy_yankov: {
+    assignments: ["reading",
+    "initial",
+    "householder",
+    "return",
+    "bibleStudy",
+    "talk",],
+    russianName: "Евгений Янков",
   },
 };
 export const masterListSisters = {
@@ -442,6 +456,14 @@ export const masterListSisters = {
   inna_kruglaya: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Инна Круглая",
+  },
+  valentina_yankov: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Валентина Янкова",
+  },
+  viktoria_yankov: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Виктория Янкова",
   },
   //not used Virginia Gilbert, Luba Gorina, Inna Kruglaya, gulzhikhan_galeeva, kristina sulyk, barbara gelen
 };
