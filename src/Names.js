@@ -217,20 +217,20 @@ export const masterListBrothers = {
   },
   aleksandr_loshkarov: {
     assignments: ["reading",
-    "initial",
-    "householder",
-    "return",
-    "bibleStudy",
-    "talk",],
+      "initial",
+      "householder",
+      "return",
+      "bibleStudy",
+      "talk",],
     russianName: "Александр Лошкарев",
   },
   evgeniy_yankov: {
     assignments: ["reading",
-    "initial",
-    "householder",
-    "return",
-    "bibleStudy",
-    "talk",],
+      "initial",
+      "householder",
+      "return",
+      "bibleStudy",
+      "talk",],
     russianName: "Евгений Янков",
   },
 };
@@ -546,12 +546,14 @@ export const chooseBrother = (assign) => {
   const brotherName = randomNoRepeats(copyBrothersNames);
   return brotherName();
 };
-export const chooseSister = (assign) => {
+export const chooseSister = (assign, householder) => {
   const assignment = /initial|return|bibleStudy/.test(assign);
   const arrayNames = [];
   let counter = 0;
+
   const randomNoRepeats = (array) => {
     var copy = array;
+    //var copy2 = [...array];
     return function test() {
       if (copy.length < 1) {
         copySistersNames = onlySistersNames.filter(
@@ -559,6 +561,16 @@ export const chooseSister = (assign) => {
         );
         copy = copySistersNames;
       }
+      if (arrayNames.length === 0) {
+        let filteredNames = copy.filter(
+          (v) => !removedSistersNames.includes(v) && !householder.includes(v)
+        );
+        copy = filteredNames;
+      }
+      // if(arrayNames === 1){
+      //   copy = copy2.filter(v => arrayNames[0] !== v)
+      // }
+
       var index = Math.floor(Math.random() * copy.length);
       var item = copy[index];
       let el;

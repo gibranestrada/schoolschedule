@@ -12,6 +12,7 @@ const Layout = () => {
   const [tajikSisters, setTajikSisters] = useState([]);
   const [tajikBrothers, setTajikBrothers] = useState([]);
   const [finalNames, setFinalNames] = useState({});
+  const [householder, setHouseholder] = useState([]);
   const [date, setDate] = useState({ day: "", month: "" });
 
   const russianAssign = {
@@ -66,7 +67,7 @@ const Layout = () => {
         }
       } else {
         if (assignmentArr) {
-          const returnedNames = names.chooseSister(value);
+          const returnedNames = names.chooseSister(value, householder);
           return {
             [schoolOptions[value].school]: {
               assignedTo: returnedNames[0],
@@ -121,14 +122,18 @@ const Layout = () => {
     e.persist();
     if (e.target.type === "radio") {
       if (e.target.value === "no") {
-        const copyOfSchoolOptions = {...schoolOptions};
+        const copyOfSchoolOptions = { ...schoolOptions };
         delete copyOfSchoolOptions[e.target.name];
-        setSchoolOptions({...copyOfSchoolOptions});
+        setSchoolOptions({ ...copyOfSchoolOptions });
       } else {
-        setSchoolOptions((s)=> {return {...s, 
-          [e.target.name]: {assignment: e.target.value, school: e.target.className}}})
+        setSchoolOptions((s) => {
+          return {
+            ...s,
+            [e.target.name]: { assignment: e.target.value, school: e.target.className }
+          }
+        })
       }
-    }else if(e.target.nextSibling.type !== "radio"){
+    } else if (e.target.nextSibling.type !== "radio") {
       e.preventDefault();
     }
   };
@@ -147,7 +152,7 @@ const Layout = () => {
         "ruhafzo_joraeva",
         "ganimat_bekmamadova",
       ]);
-      setTajikBrothers(()=> [
+      setTajikBrothers(() => [
         "alijon_davlyatov",
         "kahor_otozhonov",
         "abdulla_kadirov",
@@ -159,7 +164,7 @@ const Layout = () => {
       ]);
     } else {
       setTajikSisters(() => []);
-      setTajikBrothers(()=> []);
+      setTajikBrothers(() => []);
     }
     console.log("tajikHandler after", tajikBrothers, tajikSisters)
   };
@@ -168,10 +173,10 @@ const Layout = () => {
     e.preventDefault();
     console.log("setDate", date)
     if (e.target.id === "day") {
-      setDate((s)=> {return {...s, day: e.target.value}})
+      setDate((s) => { return { ...s, day: e.target.value } })
       //date.day = e.target.value;
     } else if (e.target.id === "month") {
-      setDate((s)=> {return {...s, month: e.target.value}})
+      setDate((s) => { return { ...s, month: e.target.value } })
       //date.month = e.target.value;
     }
     console.log("setDate after", date)
@@ -189,9 +194,8 @@ const Layout = () => {
       finalNames.firstSchool.forEach((value) => {
         let name = combineNames[value.assignedTo].russianName;
         let householder = combineNames?.[value.houseHolder]?.russianName;
-        blob += `${russianAssign[value.assignment]}: ${name} ${
-          householder ? " / " + householder : ""
-        } \r\n `;
+        blob += `${russianAssign[value.assignment]}: ${name} ${householder ? " / " + householder : ""
+          } \r\n `;
       });
       finalNames.secondSchool.forEach((value) => {
         let name = combineNames[value.assignedTo].russianName;
@@ -200,9 +204,8 @@ const Layout = () => {
           counter += 1;
           blob += `\r\n ${russianAssign.secondSchool} \r\n `;
         }
-        blob += `${russianAssign[value.assignment]}: ${name} ${
-          householder ? " / " + householder : ""
-        } \r\n `;
+        blob += `${russianAssign[value.assignment]}: ${name} ${householder ? " / " + householder : ""
+          } \r\n `;
       });
       console.log(blob);
       // var blob2 = new Blob([blob], {
@@ -233,10 +236,12 @@ const Layout = () => {
           <label htmlFor="tajik">Tajik</label>
         </div>
         <RemoveNames
-          broNames = {setRemovedBrothersNames}
-          sisNames = {setRemovedSistersNames}
+          broNames={setRemovedBrothersNames}
+          sisNames={setRemovedSistersNames}
           removedBrothersNames={removedBrothersNames}
           removedSistersNames={removedSistersNames}
+          houseHolder={householder}
+          setHouseholder={setHouseholder}
         />
         <p style={{ fontSize: "22px", fontWeight: 600, marginBottom: "0px" }}>
           First School
@@ -257,7 +262,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="reading2">No</label>
-            <input id="reading2" type="radio" value="no" name="reading" required />
+            <input id="reading2" type="radio" value="no" name="reading" defaultChecked required />
           </div>
           <div>
             <p>Initial Call</p>
@@ -280,7 +285,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="initialCall3">No</label>
-            <input id="initialCall3" type="radio" value="no" name="initial" required />
+            <input id="initialCall3" type="radio" value="no" defaultChecked name="initial" required />
           </div>
           <div>
             <p>Initial Call 2</p>
@@ -303,7 +308,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="2initialCall3">No</label>
-            <input id="2initialCall3" type="radio" value="no" name="initial2" required />
+            <input id="2initialCall3" type="radio" defaultChecked value="no" name="initial2" required />
           </div>
           <div>
             <p>Initial Call 3</p>
@@ -326,7 +331,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="3initialCall3">No</label>
-            <input id="3initialCall3" type="radio" value="no" name="initial3" required />
+            <input id="3initialCall3" defaultChecked type="radio" value="no" name="initial3" required />
           </div>
           <div>
             <p>Return Visit</p>
@@ -349,7 +354,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="returnVisit3">No</label>
-            <input id="returnVisit3" type="radio" value="no" name="return" required />
+            <input id="returnVisit3" defaultChecked type="radio" value="no" name="return" required />
           </div>
           <div>
             <p>Return Visit 2</p>
@@ -372,7 +377,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="2returnVisit3">No</label>
-            <input id="2returnVisit3" type="radio" value="no" name="return2" required />
+            <input id="2returnVisit3" defaultChecked type="radio" value="no" name="return2" required />
           </div>
           <div>
             <p>Bible Study</p>
@@ -395,7 +400,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="bibleStudy3">No</label>
-            <input id="bibleStudy3" type="radio" value="no" name="bibleStudy" required />
+            <input id="bibleStudy3" defaultChecked type="radio" value="no" name="bibleStudy" required />
           </div>
           <div>
             <p>Talk</p>
@@ -409,7 +414,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="talk2">No</label>
-            <input id="talk2" type="radio" value="no" name="talk" required />
+            <input id="talk2" defaultChecked type="radio" value="no" name="talk" required />
           </div>
         </div>
         <p style={{ fontSize: "22px", fontWeight: 600, marginBottom: "0px" }}>
@@ -431,7 +436,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="2ndreading2">No</label>
-            <input id="2ndreading2" type="radio" value="no" name="reading2" required />
+            <input id="2ndreading2" defaultChecked type="radio" value="no" name="reading2" required />
           </div>
           <div>
             <p>Initial Call</p>
@@ -453,7 +458,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="2ndinitialCall3">No</label>
-            <input id="2ndinitialCall3" type="radio" value="no" name="2ndinitial" required />
+            <input id="2ndinitialCall3" defaultChecked type="radio" value="no" name="2ndinitial" required />
           </div>
           <div>
             <p>Initial Call 2</p>
@@ -474,7 +479,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="2ndinitialCall23">No</label>
-            <input id="2ndinitialCall23" type="radio" value="no" name="2ndinitial2" required />
+            <input id="2ndinitialCall23" defaultChecked type="radio" value="no" name="2ndinitial2" required />
           </div>
           <div>
             <p>Initial Call 3</p>
@@ -495,7 +500,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="ic33">No</label>
-            <input id="ic33" type="radio" value="no" name="2ndinitial3" required />
+            <input id="ic33" type="radio" defaultChecked value="no" name="2ndinitial3" required />
           </div>
           <div>
             <p>Return Visit</p>
@@ -516,7 +521,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="rv3">No</label>
-            <input id="rv3" type="radio" value="no" name="2ndreturn" required />
+            <input id="rv3" type="radio" defaultChecked value="no" name="2ndreturn" required />
           </div>
           <div>
             <p>Return Visit 2</p>
@@ -537,7 +542,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="rv23">No</label>
-            <input id="rv23" type="radio" value="no" name="2ndreturn2" required />
+            <input id="rv23" type="radio" defaultChecked value="no" name="2ndreturn2" required />
           </div>
           <div>
             <p>Bible Study</p>
@@ -558,7 +563,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="bs3">No</label>
-            <input id="bs3" type="radio" value="no" name="bibleStudy2" required />
+            <input id="bs3" type="radio" defaultChecked value="no" name="bibleStudy2" required />
           </div>
           <div>
             <p>Talk</p>
@@ -571,7 +576,7 @@ const Layout = () => {
               required
             />
             <label htmlFor="t2">No</label>
-            <input id="t2" type="radio" value="no" name="talk2" required />
+            <input id="t2" type="radio" defaultChecked value="no" name="talk2" required />
           </div>
         </div>
         <div onChange={setDateHandler} className={styles.submitReset}>

@@ -2,7 +2,7 @@ import React from "react";
 import * as names from "./Names";
 import styles from "./Layout.module.css";
 
-const RemoveNames = ({ removedBrothersNames, removedSistersNames, broNames, sisNames }) => {
+const RemoveNames = ({ removedBrothersNames, removedSistersNames, broNames, sisNames, householder, setHouseholder }) => {
   const brothersList = Object.keys(names.masterListBrothers).sort();
   const sistersList = Object.keys(names.masterListSisters).sort();
   const removedNamesHandler = (e) => {
@@ -10,11 +10,11 @@ const RemoveNames = ({ removedBrothersNames, removedSistersNames, broNames, sisN
     if (e.target.type === "checkbox") {
       if (e.target.className === "sister") {
         if (removedSistersNames.includes(e.target.name)) {
-         sisNames(removedSistersNames.filter(
+          sisNames(removedSistersNames.filter(
             (value) => value !== e.target.name //removed .id
           ));
         } else {
-          sisNames((s)=> [...s, e.target.name])
+          sisNames((s) => [...s, e.target.name])
           //removedSistersNames.push(e.target.id);
         }
       } else if (e.target.className === "brother") {
@@ -23,10 +23,16 @@ const RemoveNames = ({ removedBrothersNames, removedSistersNames, broNames, sisN
             (value) => value !== e.target.name
           ));
         } else {
-          broNames((s)=> [...s, e.target.name]);
+          broNames((s) => [...s, e.target.name]);
+        }
+      } else if (e.target.className === "householder") {
+        if (householder?.includes(e.target.name)) {
+          setHouseholder(householder.filter((value) => value !== e.target.name))
+        } else {
+          setHouseholder((s) => [...s, e.target.name])
         }
       }
-    }else if(e.target.previousSibling.type !== "checkbox"){
+    } else if (e.target.previousSibling.type !== "checkbox") {
       e.preventDefault();
     }
   };
@@ -49,6 +55,13 @@ const RemoveNames = ({ removedBrothersNames, removedSistersNames, broNames, sisN
               className="sister"
               type="checkbox"
               id={value + id}
+              value={value}
+              name={value}
+            />
+            <input
+              className="householder"
+              type="checkbox"
+              id={"householder" + id}
               value={value}
               name={value}
             />
