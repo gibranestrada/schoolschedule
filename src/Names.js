@@ -553,7 +553,7 @@ export const chooseSister = (assign, householder) => {
 
   const randomNoRepeats = (array) => {
     var copy = array;
-    //var copy2 = [...array];
+    var copy2 = [...array];
     return function test() {
       if (copy.length < 1) {
         copySistersNames = onlySistersNames.filter(
@@ -567,9 +567,11 @@ export const chooseSister = (assign, householder) => {
         );
         copy = filteredNames;
       }
-      // if(arrayNames === 1){
-      //   copy = copy2.filter(v => arrayNames[0] !== v)
-      // }
+      if(arrayNames.length === 1){
+        copy = copy2;
+        let filteredNames = copy.filter(v => !removedSistersNames.includes(v) && arrayNames[0] !== v)
+        copy = filteredNames;
+      }
 
       var index = Math.floor(Math.random() * copy.length);
       var item = copy[index];
