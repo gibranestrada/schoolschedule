@@ -170,17 +170,17 @@ export const masterListBrothers = {
     assignments: ["reading", "initial", "householder", "return"],
     russianName: "Абдулла Кадыров",
   },
-  kahor_otozhonov: {
-    assignments: [
-      "reading",
-      "talk",
-      "initial",
-      "householder",
-      "return",
-      "bibleStudy",
-    ],
-    russianName: "Кахор Отоженов",
-  },
+  // kahor_otozhonov: {
+  //   assignments: [
+  //     "reading",
+  //     "talk",
+  //     "initial",
+  //     "householder",
+  //     "return",
+  //     "bibleStudy",
+  //   ],
+  //   russianName: "Кахор Отоженов",
+  // },
   alijon_davlyatov: {
     assignments: [
       "reading",
@@ -211,10 +211,10 @@ export const masterListBrothers = {
     assignments: ["reading", "initial", "householder", "return"],
     russianName: "Кирилл Ступко",
   },
-  evgeniy_krasnoshapka: {
-    assignments: ["initial", "householder", "return", "bibleStudy", "talk"],
-    russianName: "Евгений Красношапка",
-  },
+  // evgeniy_krasnoshapka: {
+  //   assignments: ["initial", "householder", "return", "bibleStudy", "talk"],
+  //   russianName: "Евгений Красношапка",
+  // },
   aleksandr_loshkarov: {
     assignments: ["reading",
       "initial",
@@ -225,14 +225,18 @@ export const masterListBrothers = {
     russianName: "Александр Лошкарев",
   },
   evgeniy_yankov: {
+    assignments: ["reading",],
+    russianName: "Евгений Янков",
+  },
+  samuel_mardanov: {
     assignments: ["reading",
       "initial",
       "householder",
       "return",
       "bibleStudy",
       "talk",],
-    russianName: "Евгений Янков",
-  },
+      russianName: "Самуил марданов",
+  }
 };
 export const masterListSisters = {
   maria_drozdova: {
@@ -336,10 +340,6 @@ export const masterListSisters = {
   irina_osadze: {
     assignments: ["initial", "bibleStudy", "householder", "return"],
     russianName: "Ира Осадзе",
-  },
-  sofia_dvornik: {
-    assignments: ["initial", "return", "householder", "bibleStudy"],
-    russianName: "София Дворник",
   },
   brenda_augustine: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
