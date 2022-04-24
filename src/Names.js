@@ -77,10 +77,10 @@ export const masterListBrothers = {
     ],
     russianName: "Акмал Давлятов",
   },
-  petro_solyanik: {
-    assignments: ["reading", "initial", "householder", "talk"],
-    russianName: "Петро Солянык",
-  },
+  // petro_solyanik: {
+  //   assignments: ["reading", "initial", "householder", "talk"],
+  //   russianName: "Петро Солянык",
+  // },
   dilovar_babahanov: {
     assignments: ["reading", "initial", "householder"],
     russianName: "Диловар Бабаханов",
@@ -216,27 +216,31 @@ export const masterListBrothers = {
   //   russianName: "Евгений Красношапка",
   // },
   aleksandr_loshkarov: {
-    assignments: ["reading",
+    assignments: [
+      "reading",
       "initial",
       "householder",
       "return",
       "bibleStudy",
-      "talk",],
+      "talk",
+    ],
     russianName: "Александр Лошкарев",
   },
   evgeniy_yankov: {
-    assignments: ["reading",],
+    assignments: ["reading"],
     russianName: "Евгений Янков",
   },
   samuel_mardanov: {
-    assignments: ["reading",
+    assignments: [
+      "reading",
       "initial",
       "householder",
       "return",
       "bibleStudy",
-      "talk",],
-      russianName: "Самуил марданов",
-  }
+      "talk",
+    ],
+    russianName: "Самуил марданов",
+  },
 };
 export const masterListSisters = {
   maria_drozdova: {
@@ -316,10 +320,10 @@ export const masterListSisters = {
     assignments: ["initial", "householder", "return", "bibleStudy"],
     russianName: "Анжелина Игумнова",
   },
-  maria_chirkova: {
-    assignments: ["householder"],
-    russianName: "Марина Чиркова",
-  },
+  // maria_chirkova: {
+  //   assignments: ["householder"],
+  //   russianName: "Марина Чиркова",
+  // },
   katya_pichugina: {
     assignments: ["initial", "bibleStudy", "return", "householder"],
     russianName: "Катя Пичугина",
@@ -567,9 +571,11 @@ export const chooseSister = (assign, householder) => {
         );
         copy = filteredNames;
       }
-      if(arrayNames.length === 1){
+      if (arrayNames.length === 1) {
         copy = copy2;
-        let filteredNames = copy.filter(v => !removedSistersNames.includes(v) && arrayNames[0] !== v)
+        let filteredNames = copy.filter(
+          (v) => !removedSistersNames.includes(v) && arrayNames[0] !== v
+        );
         copy = filteredNames;
       }
 
