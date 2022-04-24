@@ -171,7 +171,7 @@ const Layout = () => {
   const setDateHandler = (e) => {
     e.persist();
     e.preventDefault();
-    console.log("setDate", date)
+    
     if (e.target.id === "day") {
       setDate((s) => { return { ...s, day: e.target.value } })
       //date.day = e.target.value;
