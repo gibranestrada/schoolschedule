@@ -269,7 +269,7 @@ export const masterListSisters = {
     russianName: "ольга бабак",
   },
   olga_buyanova: {
-    assignments: ["initial", "return", "householder", "bibleStudy"],
+    assignments: ["householder"],
     russianName: "ольга Буянова",
   },
   angela_matatova: {
@@ -328,11 +328,11 @@ export const masterListSisters = {
     assignments: ["initial", "return", "bibleStudy", "householder"],
     russianName: "татьяна даниелсон",
   },
-  angelika_estrada: {
-    assignments: ["initial", "return", "householder"],
-    exceptions: ["only 2nd school"],
-    russianName: "Ангелика Эстрада",
-  },
+  // angelika_estrada: {
+  //   assignments: ["initial", "return", "householder"],
+  //   exceptions: ["only 2nd school"],
+  //   russianName: "Ангелика Эстрада",
+  // },
   jana_bennett: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Джана Беннет",
@@ -405,9 +405,9 @@ export const masterListSisters = {
     assignments: ["bibleStudy", "initial", "return", "householder"],
     russianName: "Катя Кадырова",
   },
-  tamano_davlyatova: {
+  tamano_gurbandurdieva: {
     assignments: ["householder", "initial", "return", "bibleStudy"],
-    russianName: "Тамано Давлятова",
+    russianName: "Тамано Гурбандурдиева",
   },
   ganimat_bekmamadova: {
     assignments: ["householder", "initial", "return", "bibleStudy"],
