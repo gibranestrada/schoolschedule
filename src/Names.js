@@ -19,7 +19,14 @@ export const masterListBrothers = {
     russianName: "Максим Петров",
   },
   gibran_estrada: {
-    assignments: ["initial", "reading", "return", "householder", "bibleStudy"], // talk
+    assignments: [
+      "initial",
+      "reading",
+      "return",
+      "householder",
+      "bibleStudy",
+      "talk",
+    ],
     russianName: "Хибран Эстрада",
   },
   vadim_klimenko: {
@@ -55,41 +62,12 @@ export const masterListBrothers = {
     ],
     russianName: "Тимур Ходжиев",
   },
-  aleksandr_mihailov: {
-    assignments: [
-      "reading",
-      "initial",
-      "householder",
-      "return",
-      "talk",
-      "bibleStudy",
-    ],
-    russianName: "Александр Михайлов",
-  },
-  akmal_davlyatov: {
-    assignments: [
-      "initial",
-      "reading",
-      "talk",
-      "householder",
-      "return",
-      "bibleStudy",
-    ],
-    russianName: "Акмал Давлятов",
-  },
   dilovar_babahanov: {
     assignments: ["reading", "initial", "householder"],
     russianName: "Диловар Бабаханов",
   },
   aleksandr_agapov: {
-    assignments: [
-      "reading",
-      "bibleStudy",
-      "talk",
-      "initial",
-      "householder",
-      "bibleStudy",
-    ],
+    assignments: ["reading"],
     russianName: "Александр Агапов",
   },
   babajon_gurbandurdiev: {
@@ -113,17 +91,6 @@ export const masterListBrothers = {
       "householder",
     ],
     russianName: "Сергей Пашкевич",
-  },
-  eduard_mihailov: {
-    assignments: [
-      "reading",
-      "initial",
-      "talk",
-      "householder",
-      "return",
-      "bibleStudy",
-    ],
-    russianName: "Эдуард Михайлов",
   },
   akhmad_davlyatov: {
     assignments: [
@@ -151,31 +118,9 @@ export const masterListBrothers = {
     ],
     russianName: "Семён Дадабаев",
   },
-  yegor_drozdov: {
-    assignments: [
-      "reading",
-      "talk",
-      "householder",
-      "initial",
-      "return",
-      "bibleStudy",
-    ],
-    russianName: "Егор Дроздов",
-  },
   abdulla_kadirov: {
     assignments: ["reading", "initial", "householder", "return"],
     russianName: "Абдулла Кадыров",
-  },
-  alijon_davlyatov: {
-    assignments: [
-      "reading",
-      "return",
-      "talk",
-      "initial",
-      "householder",
-      "bibleStudy",
-    ],
-    russianName: "Алиджон Давлятов",
   },
   andrey_aksentyev: {
     assignments: ["householder", "reading", "initial"],
@@ -237,12 +182,19 @@ export const masterListBrothers = {
     ],
     russianName: "Михаил Дроздов",
   },
+  evgeniy_voldizhev: {
+    assignments: [
+      "reading",
+      "initial",
+      "householder",
+      "return",
+      "bibleStudy",
+      "talk",
+    ],
+    russianName: "Евгений Болдыжев",
+  },
 };
 export const masterListSisters = {
-  maria_drozdova: {
-    assignments: ["initial", "return", "householder", "bibleStudy"],
-    russianName: "Мария Дроздова",
-  },
   stephanie_brown: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Стефани Браун",
@@ -311,10 +263,6 @@ export const masterListSisters = {
   mavis_springer: {
     assignments: ["initial", "householder", "return", "bibleStudy"],
     russianName: "Мэвис Спрингер",
-  },
-  larisa_mihailova: {
-    assignments: ["initial", "householder", "return", "bibleStudy"],
-    russianName: "Лариса Михайлова",
   },
   angelina_igumnov: {
     assignments: ["initial", "householder", "return", "bibleStudy"],
@@ -433,10 +381,6 @@ export const masterListSisters = {
     assignments: ["intial", "return", "householder"],
     russianName: "Нисо Давлятова",
   },
-  vita_mikhailov: {
-    assignments: ["intial", "return", "householder"],
-    russianName: "Вита Михайлова",
-  },
   galina_drozdova: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Галина Дроздова",
@@ -477,7 +421,11 @@ export const masterListSisters = {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Елена Матвеева",
   },
-  //not used Luba Gorina, Inna Kruglaya, gulzhikhan_galeeva, kristina sulyk,
+  anastasia_voldizheva: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Анастасия Болдыжева",
+  },
+  //not used Luba Gorina, Inna Kruglaya, gulzhikhan_galeeva,
 };
 let onlyBrothersNames = Object.keys(masterListBrothers);
 let onlySistersNames = Object.keys(masterListSisters);
