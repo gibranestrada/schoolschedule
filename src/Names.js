@@ -142,23 +142,8 @@ export const masterListBrothers = {
     russianName: "Кирилл Ступко",
   },
   evgeniy_yankov: {
-    assignments: ["reading"],
+    assignments: ["reading", "householder"],
     russianName: "Евгений Янков",
-  },
-  samuel_mardanov: {
-    assignments: [
-      "reading",
-      "initial",
-      "householder",
-      "return",
-      "bibleStudy",
-      "talk",
-    ],
-    russianName: "Самуил марданов",
-  },
-  emir_tabil: {
-    assignments: ["reading"],
-    russianName: "Эмир Табил",
   },
   mikhail_drozdov: {
     assignments: [
@@ -201,6 +186,10 @@ export const masterListBrothers = {
     assignments: ["reading", "householder"],
     russianName: "Андрей Фролов",
   },
+  iliya_viropaev: {
+    assignments: ["reading", "householder"],
+    russianName: "Илья Воропаев",
+  },
 };
 export const masterListSisters = {
   stephanie_brown: {
@@ -227,10 +216,6 @@ export const masterListSisters = {
   olga_babak: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "ольга бабак",
-  },
-  olga_buyanova: {
-    assignments: ["householder"],
-    russianName: "ольга Буянова",
   },
   angela_matatova: {
     assignments: ["initial", "bibleStudy", "householder", "return"],
@@ -444,6 +429,10 @@ export const masterListSisters = {
   olga_frolova: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Ольга Фролова",
+  },
+  natalya_gorbunova: {
+    assignments: ["householder"],
+    russianName: "Наталья Горбунова",
   },
 };
 let onlyBrothersNames = Object.keys(masterListBrothers);
