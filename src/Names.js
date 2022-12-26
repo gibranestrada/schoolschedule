@@ -190,7 +190,19 @@ export const masterListBrothers = {
     assignments: ["reading", "householder"],
     russianName: "Илья Воропаев",
   },
+  ernest_akopyan: {
+    assignments: [
+      "reading",
+      "initial",
+      "householder",
+      "return",
+      "bibleStudy",
+      "talk",
+    ],
+    russianName: "Эрнест Акопиян",
+  },
 };
+
 export const masterListSisters = {
   stephanie_brown: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
@@ -206,7 +218,7 @@ export const masterListSisters = {
   },
   ella_dadabaeva: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
-    russianName: "Элла Дадабаева ",
+    russianName: "Элла Дадабаева",
   },
   erkenai_joraeva: {
     assignments: ["initial", "householder", "return", "bibleStudy"],
@@ -371,7 +383,7 @@ export const masterListSisters = {
     russianName: "Рухафзо Джураева",
   },
   nisso_davlyatova: {
-    assignments: ["intial", "return", "householder"],
+    assignments: ["initial", "return", "householder"],
     russianName: "Нисо Давлятова",
   },
   galina_drozdova: {
