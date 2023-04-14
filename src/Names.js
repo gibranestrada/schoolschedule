@@ -145,17 +145,17 @@ export const masterListBrothers = {
     assignments: ["reading", "householder"],
     russianName: "Евгений Янков",
   },
-  mikhail_drozdov: {
-    assignments: [
-      "reading",
-      "initial",
-      "householder",
-      "return",
-      "bibleStudy",
-      "talk",
-    ],
-    russianName: "Михаил Дроздов",
-  },
+  // mikhail_drozdov: {
+  //   assignments: [
+  //     "reading",
+  //     "initial",
+  //     "householder",
+  //     "return",
+  //     "bibleStudy",
+  //     "talk",
+  //   ],
+  //   russianName: "Михаил Дроздов",
+  // },
   evgeniy_molostov: {
     assignments: [
       "reading",
@@ -234,17 +234,17 @@ export const masterListBrothers = {
     ],
     russianName: "Сергей Буданов",
   },
-  platon_predel: {
-    assignments: [
-      "reading",
-      "initial",
-      "householder",
-      "return",
-      "bibleStudy",
-      "talk",
-    ],
-    russianName: "Платон Предель",
-  },
+  // platon_predel: {
+  //   assignments: [
+  //     "reading",
+  //     "initial",
+  //     "householder",
+  //     "return",
+  //     "bibleStudy",
+  //     "talk",
+  //   ],
+  //   russianName: "Платон Предель",
+  // },
 };
 
 export const masterListSisters = {
