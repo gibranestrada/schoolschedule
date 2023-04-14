@@ -201,6 +201,50 @@ export const masterListBrothers = {
     ],
     russianName: "Эрнест Акопиян",
   },
+  lev_predel: {
+    assignments: [
+      "reading",
+      "initial",
+      "householder",
+      "return",
+      "bibleStudy",
+      "talk",
+    ],
+    russianName: "Лев Предель",
+  },
+  aleksandr_nikitin: {
+    assignments: [
+      "reading",
+      "initial",
+      "householder",
+      "return",
+      "bibleStudy",
+      "talk",
+    ],
+    russianName: "Александр Никитин",
+  },
+  sergei_budanov: {
+    assignments: [
+      "reading",
+      "initial",
+      "householder",
+      "return",
+      "bibleStudy",
+      "talk",
+    ],
+    russianName: "Сергей Буданов",
+  },
+  platon_predel: {
+    assignments: [
+      "reading",
+      "initial",
+      "householder",
+      "return",
+      "bibleStudy",
+      "talk",
+    ],
+    russianName: "Платон Предель",
+  },
 };
 
 export const masterListSisters = {
@@ -245,10 +289,10 @@ export const masterListSisters = {
     assignments: ["initial", "bibleStudy", "householder", "return"],
     russianName: "Верна Кинлок",
   },
-  sabina_ruvin: {
-    assignments: ["initial", "householder", "return", "bibleStudy"],
-    russianName: "Сабина Рубин",
-  },
+  // sabina_ruvin: {
+  //   assignments: ["initial", "householder", "return", "bibleStudy"],
+  //   russianName: "Сабина Рубин",
+  // },
   charlene_thomas: {
     assignments: ["initial", "householder", "return", "bibleStudy"],
     russianName: "Шарлин Томас",
@@ -268,10 +312,6 @@ export const masterListSisters = {
   mavis_springer: {
     assignments: ["initial", "householder", "return", "bibleStudy"],
     russianName: "Мэвис Спрингер",
-  },
-  angelina_igumnov: {
-    assignments: ["initial", "householder", "return", "bibleStudy"],
-    russianName: "Анжелина Игумнова",
   },
   katya_pichugina: {
     assignments: ["initial", "bibleStudy", "return", "householder"],
@@ -394,10 +434,6 @@ export const masterListSisters = {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Валерия Красношапка",
   },
-  evgeniya_krasnoshapka: {
-    assignments: ["initial", "return", "householder", "bibleStudy"],
-    russianName: "Евгения Красношапка",
-  },
   marina_vasileva: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Марина Васильева",
@@ -445,6 +481,26 @@ export const masterListSisters = {
   natalya_gorbunova: {
     assignments: ["householder"],
     russianName: "Наталья Горбунова",
+  },
+  alena_predel: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Алена Предель",
+  },
+  anastasia_nikitina: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Анастасия Никитина",
+  },
+  leila_budanova: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Лейла Буданова",
+  },
+  larisa_predel: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Лариса Предель",
+  },
+  maria_predel: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Мария Предель",
   },
 };
 let onlyBrothersNames = Object.keys(masterListBrothers);
