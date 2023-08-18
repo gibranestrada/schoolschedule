@@ -514,6 +514,10 @@ export const masterListSisters = {
     assignments: ["householder"],
     russianName: "татьяна Вержбо",
   },
+  aliyam_aleeva: {
+    assignments: ["householder"],
+    russianName: "Аиша Новикова",
+  },
 };
 let onlyBrothersNames = Object.keys(masterListBrothers);
 let onlySistersNames = Object.keys(masterListSisters);
