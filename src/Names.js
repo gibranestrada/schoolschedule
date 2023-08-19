@@ -119,7 +119,7 @@ export const masterListBrothers = {
     russianName: "Абдулла Кадыров",
   },
   andrey_aksentyev: {
-    assignments: ["householder", "reading", "initial"],
+    assignments: ["householder", "reading", "initial", "return"],
     russianName: "Андрей Аксентьев",
   },
   maks_shapovalov: {
@@ -141,17 +141,6 @@ export const masterListBrothers = {
     assignments: ["reading", "householder"],
     russianName: "Евгений Янков",
   },
-  // mikhail_drozdov: {
-  //   assignments: [
-  //     "reading",
-  //     "initial",
-  //     "householder",
-  //     "return",
-  //     "bibleStudy",
-  //     "talk",
-  //   ],
-  //   russianName: "Михаил Дроздов",
-  // },
   evgeniy_molostov: {
     assignments: [
       "reading",
@@ -230,17 +219,6 @@ export const masterListBrothers = {
     ],
     russianName: "Сергей Буданов",
   },
-  // platon_predel: {
-  //   assignments: [
-  //     "reading",
-  //     "initial",
-  //     "householder",
-  //     "return",
-  //     "bibleStudy",
-  //     "talk",
-  //   ],
-  //   russianName: "Платон Предель",
-  // },
 };
 
 export const masterListSisters = {
@@ -285,10 +263,6 @@ export const masterListSisters = {
     assignments: ["initial", "bibleStudy", "householder", "return"],
     russianName: "Верна Кинлок",
   },
-  // sabina_ruvin: {
-  //   assignments: ["initial", "householder", "return", "bibleStudy"],
-  //   russianName: "Сабина Рубин",
-  // },
   charlene_thomas: {
     assignments: ["initial", "householder", "return", "bibleStudy"],
     russianName: "Шарлин Томас",
@@ -317,11 +291,6 @@ export const masterListSisters = {
     assignments: ["initial", "return", "bibleStudy", "householder"],
     russianName: "татьяна даниелсон",
   },
-  // angelika_estrada: {
-  //   assignments: ["initial", "return", "householder"],
-  //   exceptions: ["only 2nd school"],
-  //   russianName: "Ангелика Эстрада",
-  // },
   jana_bennett: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Джана Беннет",
@@ -516,7 +485,7 @@ export const masterListSisters = {
   },
   aliyam_aleeva: {
     assignments: ["householder"],
-    russianName: "Аиша Новикова",
+    russianName: "Алиям Алеева",
   },
 };
 let onlyBrothersNames = Object.keys(masterListBrothers);
