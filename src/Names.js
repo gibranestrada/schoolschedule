@@ -219,6 +219,19 @@ export const masterListBrothers = {
     ],
     russianName: "Сергей Буданов",
   },
+  zakar_ivanov: {
+    assignments: [
+      "reading",
+    ],
+    russianName: "Закар Иванов",
+  },
+  pavel_shamrai: {
+    assignments: [
+      "reading",
+      "householder",
+    ],
+    russianName: "Павел Шамрай",
+  },
 };
 
 export const masterListSisters = {
@@ -486,6 +499,14 @@ export const masterListSisters = {
   aliyam_aleeva: {
     assignments: ["householder"],
     russianName: "Алиям Алеева",
+  },
+  alyce_acevedo: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Алисе Асеведо",
+  },
+  olessya_vlasenko: {
+    assignments: ["initial", "return", "householder", "bibleStudy"],
+    russianName: "Олеся Власенко",
   },
 };
 let onlyBrothersNames = Object.keys(masterListBrothers);
