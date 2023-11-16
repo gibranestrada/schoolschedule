@@ -216,16 +216,11 @@ export const masterListBrothers = {
     russianName: "Сергей Буданов",
   },
   zakar_ivanov: {
-    assignments: [
-      "reading",
-    ],
+    assignments: ["reading"],
     russianName: "Закар Иванов",
   },
   pavel_shamrai: {
-    assignments: [
-      "reading",
-      "householder",
-    ],
+    assignments: ["reading", "householder"],
     russianName: "Павел Шамрай",
   },
 };
