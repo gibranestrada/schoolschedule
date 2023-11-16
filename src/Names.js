@@ -405,10 +405,6 @@ export const masterListSisters = {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Галина Дроздова",
   },
-  valeria_krasnoshapka: {
-    assignments: ["initial", "return", "householder", "bibleStudy"],
-    russianName: "Валерия Красношапка",
-  },
   marina_vasileva: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Марина Васильева",
