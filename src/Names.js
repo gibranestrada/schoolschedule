@@ -171,10 +171,6 @@ export const masterListBrothers = {
     assignments: ["reading", "householder"],
     russianName: "Андрей Фролов",
   },
-  iliya_viropaev: {
-    assignments: ["reading", "householder"],
-    russianName: "Илья Воропаев",
-  },
   ernest_akopyan: {
     assignments: [
       "reading",
@@ -311,6 +307,7 @@ export const masterListSisters = {
   irina_osadze: {
     assignments: ["initial", "bibleStudy", "householder", "return"],
     russianName: "Ира Осадзе",
+    mainHallOnly: true,
   },
   brenda_augustine: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
@@ -431,6 +428,7 @@ export const masterListSisters = {
   valentina_ignatova: {
     assignments: ["householder"],
     russianName: "Валентина Игнатова",
+    mainHallOnly: true,
   },
   nadejda_drozdova: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
@@ -448,17 +446,9 @@ export const masterListSisters = {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Светлана Молостова",
   },
-  maya_doguzova: {
-    assignments: ["initial", "return", "householder", "bibleStudy"],
-    russianName: "Мая Догузова",
-  },
   olga_frolova: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Ольга Фролова",
-  },
-  natalya_gorbunova: {
-    assignments: ["householder"],
-    russianName: "Наталья Горбунова",
   },
   alena_predel: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
@@ -487,10 +477,6 @@ export const masterListSisters = {
   zhanna_abilova: {
     assignments: ["householder"],
     russianName: "Жана Абилова",
-  },
-  taya_stolpovskaya: {
-    assignments: ["householder"],
-    russianName: "Тая Столповская",
   },
   tatyana_verzhbo: {
     assignments: ["householder"],

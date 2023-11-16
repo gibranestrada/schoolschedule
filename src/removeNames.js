@@ -48,7 +48,7 @@ const RemoveNames = ({
     }
   };
 
-  const onlyMainSchool = ["valentina_ignatova", "emir_tabil", "olga_buyanova"];
+  const onlyMainSchool = ["valentina_ignatova", "irina_osadze"];
 
   return (
     <div onClick={removedNamesHandler} className={styles.tablesContainer}>
