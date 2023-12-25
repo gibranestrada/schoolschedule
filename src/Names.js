@@ -223,6 +223,21 @@ export const masterListBrothers = {
     assignments: ["reading", "householder"],
     russianName: "Павел Шамрай",
   },
+  aleksandr_lobkov: {
+    assignments: [
+      "reading",
+      "initial",
+      "householder",
+      "return",
+      "bibleStudy",
+      "talk",
+    ],
+    russianName: "Александр Лобков",
+  },
+  sergei_tetrakov: {
+    assignments: ["reading", "initial", "householder", "return", "bibleStudy"],
+    russianName: "Сергей Третьяков",
+  },
 };
 
 export const masterListSisters = {
