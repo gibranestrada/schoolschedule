@@ -51,32 +51,32 @@ export const masterListBrothers = {
     ],
     russianName: "Павел Недбайлов",
   },
-  timur_khodjiev: {
-    assignments: [
-      "reading",
-      "initial",
-      "return",
-      "talk",
-      "householder",
-      "bibleStudy",
-    ],
-    russianName: "Тимур Ходжиев",
-  },
+  // timur_khodjiev: {
+  //   assignments: [
+  //     "reading",
+  //     "initial",
+  //     "return",
+  //     "talk",
+  //     "householder",
+  //     "bibleStudy",
+  //   ],
+  //   russianName: "Тимур Ходжиев",
+  // },
   dilovar_babahanov: {
     assignments: ["reading", "initial", "householder"],
     russianName: "Диловар Бабаханов",
   },
-  babajon_gurbandurdiev: {
-    assignments: [
-      "reading",
-      "return",
-      "talk",
-      "householder",
-      "initial",
-      "bibleStudy",
-    ],
-    russianName: "Бабаджон Гурбандурдиев",
-  },
+  // babajon_gurbandurdiev: {
+  //   assignments: [
+  //     "reading",
+  //     "return",
+  //     "talk",
+  //     "householder",
+  //     "initial",
+  //     "bibleStudy",
+  //   ],
+  //   russianName: "Бабаджон Гурбандурдиев",
+  // },
   sergey_pashkevich: {
     assignments: [
       "reading",
@@ -171,17 +171,17 @@ export const masterListBrothers = {
     ],
     russianName: "Эрнест Акопиян",
   },
-  lev_predel: {
-    assignments: [
-      "reading",
-      "initial",
-      "householder",
-      "return",
-      "bibleStudy",
-      "talk",
-    ],
-    russianName: "Лев Предель",
-  },
+  // lev_predel: {
+  //   assignments: [
+  //     "reading",
+  //     "initial",
+  //     "householder",
+  //     "return",
+  //     "bibleStudy",
+  //     "talk",
+  //   ],
+  //   russianName: "Лев Предель",
+  // },
   aleksandr_nikitin: {
     assignments: [
       "reading",
