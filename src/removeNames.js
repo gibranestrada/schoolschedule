@@ -62,6 +62,8 @@ const RemoveNames = ({
     "nisso_davlyatova",
     "baktygul_saberkulova",
     "aisha_novikova",
+    "natalya_vidulina",
+    "valentina_kudravets"
   ];
 
   return (

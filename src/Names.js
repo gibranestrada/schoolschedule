@@ -88,17 +88,6 @@ export const masterListBrothers = {
     ],
     russianName: "Сергей Пашкевич",
   },
-  akhmad_davlyatov: {
-    assignments: [
-      "reading",
-      "householder",
-      "talk",
-      "initial",
-      "return",
-      "bibleStudy",
-    ],
-    russianName: "Ахмад Давлятов",
-  },
   aziz_joraev: {
     assignments: ["reading", "householder"],
     russianName: "Азиз Джураев",
@@ -407,10 +396,6 @@ export const masterListSisters = {
     assignments: ["initial", "return", "householder"],
     russianName: "Рухафзо Джураева",
   },
-  nisso_davlyatova: {
-    assignments: ["initial", "return", "householder"],
-    russianName: "Нисо Давлятова",
-  },
   galina_drozdova: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Галина Дроздова",
@@ -499,6 +484,10 @@ export const masterListSisters = {
   olessya_vlasenko: {
     assignments: ["initial", "return", "householder", "bibleStudy"],
     russianName: "Олеся Власенко",
+  },
+  maria_kozir: {
+    assignments: ["householder"],
+    russianName: "Мария Козир",
   },
 };
 let onlyBrothersNames = Object.keys(masterListBrothers);
