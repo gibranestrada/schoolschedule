@@ -52,18 +52,18 @@ const RemoveNames = ({
     "valentina_ignatova",
     "irina_osadze",
     "glorya_bankhead",
-    "akhmad_davlyatov",
     "irina_timchuk",
     "mavis_springer",
     "lida_smik",
     "tatyana_verzhbo",
     "sveta_ambartsumyan",
     "natalya_nikolaeva",
-    "nisso_davlyatova",
     "baktygul_saberkulova",
     "aisha_novikova",
     "natalya_vidulina",
-    "valentina_kudravets"
+    "valentina_kudravets",
+    "luba_ostarkhova",
+    "kirill_stupko"
   ];
 
   return (
